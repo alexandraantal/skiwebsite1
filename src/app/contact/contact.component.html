@@ -1,0 +1,67 @@
+<section class="hero is-primary is-bold">
+    <div class="hero-body">
+    <div class="container">
+
+      <h1 class="title">Contact Us!</h1>
+
+    </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+    
+      <!-- form goes here -->
+<form (ngSubmit)="submitForm()" #contactForm="ngForm">
+
+    <!-- name -->
+    <div class="field">
+      <input
+      type="text" 
+      name="name" 
+      class="input" 
+      placeholder="Your Name" 
+      [(ngModel)]="name" 
+      #nameInput="ngModel"
+      required>
+    </div>
+
+    <div class="help is-error" *ngIf="nameInput.invalid && nameInput.touched">
+      Your name is required.
+    </div>
+  
+    <!-- email -->
+    <div class="field">
+      <input 
+      type="email" 
+      name="email" 
+      class="input" 
+      placeholder="Your Email" 
+      [(ngModel)]="email"
+      #emailInput="ngModel"
+      required
+      email>
+    </div>
+
+    <div class="help is-error" *ngIf="emailInput.invalid && emailInput.touched">
+      Your email is required and needs to be a valid email.
+    </div>
+  
+    <!-- message -->
+    <div class="field">
+      <textarea class="textarea" name="message" placeholder="What's on your mind?" [(ngModel)]="message"></textarea>
+    </div>
+  
+    <button 
+    type="submit" 
+    class="button is-danger is-large"
+    [disabled]="contactForm.invalid"
+    >
+    
+    Submit
+  </button>
+  
+  </form>
+    
+    </div>
+</section>

@@ -1,0 +1,56 @@
+<section class="hero is-primary is-bold">
+    <div class="hero-body">
+    <div class="container">
+
+      <a class="button is-light" routerLink="/login" id="goback">Go back</a>
+
+      <h1 class="title">Sign Up!</h1>
+
+    </div>
+    </div>
+</section>
+
+<!-- <span class="error" *ngIf="error" [@fallIn]='state'>{{ error }}</span> -->
+
+<section class="section">
+    <div class="container">
+    
+      <!-- form goes here -->
+<form #formData="ngForm" (ngSubmit)="onSubmit(formData)">
+
+  
+    <!-- email -->
+    <div class="field">
+      <input 
+      type="email" 
+      name="email" 
+      class="input" 
+      placeholder="Your Email" 
+      [(ngModel)]="email"
+      #emailInput="ngModel"
+      required
+      email>
+    </div>
+
+    <div class="help is-error" *ngIf="emailInput.invalid && emailInput.touched">
+      Your email is required and needs to be a valid email.
+    </div>
+
+    <!-- message -->
+    <div class="field">
+      <textarea  type="password" class="input" name="password" placeholder="Your Password" [(ngModel)]="password"></textarea>
+    </div>
+  
+    <button 
+    type="submit" 
+    class="button is-danger is-large"
+    [disabled]="formData.invalid"
+    >
+    
+    Create my account
+  </button>
+  
+  </form>
+    
+    </div>
+</section>

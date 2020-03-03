@@ -1,0 +1,49 @@
+  <!-- <section class="hero is-primary is-bold">
+    <div class="hero-body">
+    <div class="container">
+
+      <img src="assets/image/lock.png" id="lock">
+
+      <span class="error" *ngIf="error">{{ error }}</span>
+
+      <a class="button is-light" (click)="loginGoogle()" id="google">Login With Google</a>
+      <a class="button" routerLink="/login-email" id="email">Email</a>
+
+      <a routerLink="/signup" routerLinkActive="active" class="alc">No account? <strong>Create one here</strong></a>
+
+    </div>
+    </div>
+</section> -->
+
+
+
+
+<body class="layout-default">
+  <section class="hero is-fullheight is-primary is-bold">
+        <div class="hero-body">
+          <div class="container">
+            <div class="columns is-centered">
+              <article class="card is-rounded">
+                <div class="card-content">
+                  <h1 class="image is-96x96 is-centered">
+                                   
+                    <img src="assets/image/lock.png" alt="logo" width="100">
+                  </h1>
+                  <p class="control has-icon">
+                    <a class="button is-light" (click)="loginGoogle()" id="google">Login With Google</a>
+                  </p>
+                  <p class="control has-icon">
+                    <a class="button" routerLink="/login-email" id="email">Email</a>
+                  </p>
+                  <p class="control">
+                    <button class="button is-primary is-medium is-fullwidth">
+                      <a routerLink="/signup" routerLinkActive="active" class="alc">No account? <strong>Create one here</strong></a>
+                    </button>
+                  </p>
+                </div>
+              </article>
+            </div>
+          </div>
+    </div>
+  </section>
+</body>
