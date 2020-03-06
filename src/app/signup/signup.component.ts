@@ -21,11 +21,12 @@ export class SignupComponent implements OnInit {
   
   email: string;
   password: string;
+  name: string;
 
   state: string = '';
   error: any;
 
-  constructor(public af: AngularFireAuth,private router: Router) {
+  constructor(public af: AngularFireAuth,private router: Router, private db: AngularFireDatabase) {
 
   }
 
@@ -36,7 +37,18 @@ export class SignupComponent implements OnInit {
         formData.value.email,
         formData.value.password ).then(
         (success) => {
-        console.log(success);
+          
+          var userId = firebase.auth().currentUser.uid;
+
+          firebase
+          .database()
+          .ref("users/" + userId)
+          .set({
+            email: formData.value.email,
+            userType: "user",
+            name: formData.value.name
+          });       
+
         this.router.navigate(['/members'])
       }).catch(
         (err) => {

@@ -18,7 +18,23 @@
       <!-- form goes here -->
 <form #formData="ngForm" (ngSubmit)="onSubmit(formData)">
 
-  
+    <!-- name -->
+    <div class="field">
+      <input
+      type="text" 
+      name="name" 
+      class="input" 
+      placeholder="Your Name" 
+      [(ngModel)]="name" 
+      #nameInput="ngModel"
+      required>
+    </div>
+
+    <div class="help is-error" *ngIf="nameInput.invalid && nameInput.touched">
+      Your name is required.
+    </div>
+
+    
     <!-- email -->
     <div class="field">
       <input 
