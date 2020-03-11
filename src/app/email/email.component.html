@@ -1,15 +1,80 @@
-<div class="form-container">
-    <a routerLink="/login" id="goback">Go back</a>
-    <h2>Custom Login</h2>
+<section class="section  has-background-light">
+  <div class="container">
+    <div class="columns is-mobile has-background-light">
+  
+  <div class="column  is-half is-offset-one-quarter">
+    <div class="box">
+ 
+    <section class="container has-background-primary">
+    <div class="hero-body">
+    <div class="container">
 
-    <!-- <span class="error" *ngIf="error" [@fallIn]='state'>{{ error }}</span> -->
+      <h1 class="title">Intra in cont</h1>
+      <!-- <a class="button is-light" routerLink="/login" id="goback">Go back</a> -->
+    </div>
+    </div>
+</section>
 
-    <form #formData='ngForm' (ngSubmit)="onSubmit(formData)">
+<section class="section">
+    <div class="container">
+    
+      <!-- form goes here -->
+      <form #formData="ngForm" (ngSubmit)="onSubmit(formData)">
 
-      <input type="text" placeholder="Email address.." [(ngModel)]="email" name="email" class="txt" required>
-      <input type="password" placeholder="Password" [(ngModel)]="password" name="password" class="txt" required>
+        <div class="field">
+          <div class="control">
+        <input 
+        type="email" 
+        placeholder="Email" 
+        [(ngModel)]="email" 
+        name="email" 
+        class="input is-primary" 
+        required>
+          </div>
+        </div>
 
-      <button type="submit" [disabled]="!formData.valid" class="basic-btn">Log in</button>
-      <a routerLink="/signup" class="alc">Don't have an account?</a>
-  </form>
+        <div class="field">
+          <div class="control">
+        <input 
+        type="password" 
+        placeholder="Parola" 
+        [(ngModel)]="password" 
+        name="password" 
+        class="input is-primary" 
+        required>
+          </div>
+        </div>
+  
+        <button type="submit" [disabled]="!formData.valid" class="button is-info is-large">Login</button>
+        <br>
+        <br>
+        <a class="subtitle is-large">Nu ai cont?</a>
+        <a class="subtitle is-large" routerLink="/signup"><strong> Inregistreaza-te!</strong></a>
+    </form>
+    </div>
+
+</section>
 </div>
+
+
+  <div class="column has-text-centered">sau</div>
+
+
+  <div class="box">
+    <div class="field has-text-centered">
+            <!-- <p class="control has-icons-centered has-text-centered "> -->
+            <span class="icon is-large is-left">
+              <i class="fas fa-2x">
+              <fa-icon [icon]="faGoogle"></fa-icon>
+            </i>
+            </span>
+            <a class="button is-medium is-light " (click)="loginGoogle()" id="google">Intra in contul Google</a>
+           <!-- </p> 
+           -->
+    </div>
+  </div>
+
+  </div>
+</div>
+  </div>
+</section>

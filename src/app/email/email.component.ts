@@ -9,6 +9,8 @@ import * as firebase from 'firebase/app';
 import { Router } from '@angular/router';
  import { moveIn, fallIn } from '../router.animations';
 
+ import { faFacebook, faGoogle } from '@fortawesome/free-brands-svg-icons';
+
 @Component({
   selector: 'app-email',
   templateUrl: './email.component.html',
@@ -17,6 +19,8 @@ import { Router } from '@angular/router';
   //  host: {'[@moveIn]': ''}
 })
 export class EmailComponent implements OnInit {
+
+  faGoogle = faGoogle;
 
   email: string;
   password: string;
@@ -49,6 +53,16 @@ onSubmit(formData) {
       this.error = err;
     })
   }
+}
+
+loginGoogle() {
+  this.af.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then(
+      (success) => {
+      this.router.navigate(['/members']);
+    }).catch(
+      (err) => {
+      this.error = err;
+    })
 }
 
   ngOnInit(): void {

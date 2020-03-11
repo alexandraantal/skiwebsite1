@@ -9,6 +9,8 @@ import * as firebase from 'firebase/app';
 import { Router } from '@angular/router';
 import { moveIn, fallIn } from '../router.animations';
 
+import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
+
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -18,6 +20,8 @@ import { moveIn, fallIn } from '../router.animations';
 })
 export class SignupComponent implements OnInit {
 
+  faEnvelope = faEnvelope;
+  faLock = faLock;
   
   email: string;
   password: string;

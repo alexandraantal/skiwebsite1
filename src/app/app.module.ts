@@ -15,12 +15,14 @@ import { AngularFireModule } from 'angularfire2';
 // New imports to update based on AngularFire2 version 4
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-import { LoginComponent } from './login/login.component';
 import { EmailComponent } from './email/email.component';
 import { MembersComponent } from './members/members.component';
 import { SignupComponent } from './signup/signup.component';
 
 import { AuthGuard } from './auth.service';
+
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+ 
 
 export const firebaseConfig = {
   apiKey: "AIzaSyCgHU0VysKuDjqdsCdY0VDQpDkzg77b8F8",
@@ -38,7 +40,6 @@ export const firebaseConfig = {
     FooterComponent,
     HomeComponent,
     ContactComponent,
-    LoginComponent,
     EmailComponent,
     MembersComponent,
     SignupComponent
@@ -49,7 +50,8 @@ export const firebaseConfig = {
     FormsModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    FontAwesomeModule
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]
