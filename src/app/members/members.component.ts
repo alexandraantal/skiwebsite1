@@ -39,13 +39,13 @@ export class MembersComponent implements OnInit {
         const users= db.ref('/users/');
       }
 
-      var userId = firebase.auth().currentUser.uid;
-       firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
-        username = (snapshot.val() && snapshot.val().name) || 'Anonymous';
-        console.log(username);
+      // var userId = firebase.auth().currentUser.uid;
+      //  firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
+      //   username = (snapshot.val() && snapshot.val().name) || 'Anonymous';
+      //   console.log(username);
         
-        document.getElementById("username").innerHTML = username;
-        });
+      //   document.getElementById("username").innerHTML = username;
+      //   });
         
     });
 
@@ -58,6 +58,14 @@ export class MembersComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    var userId = firebase.auth().currentUser.uid;
+
+    firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
+      username = (snapshot.val() && snapshot.val().name) || 'Anonymous';
+      console.log(username);
+      
+      document.getElementById("username").innerHTML = username;
+      });
   }
 
 }

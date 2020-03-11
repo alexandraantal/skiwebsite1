@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { AngularFireAuth } from 'angularfire2/auth';
 import { Component, OnInit } from '@angular/core';
 
 import { faMountain } from '@fortawesome/free-solid-svg-icons';
@@ -10,8 +12,20 @@ import { faMountain } from '@fortawesome/free-solid-svg-icons';
 export class HeaderComponent implements OnInit {
 
   faMountain = faMountain;
+
+  public isLoggedIn: Boolean;
   
-  constructor() { }
+  constructor(public af: AngularFireAuth, private router: Router) { 
+
+    this.af.authState.subscribe(auth => { 
+      if(auth) {
+        this.isLoggedIn = true;
+      }
+      else {
+        this.isLoggedIn = false;
+      }
+    });
+  }
 
   ngOnInit(): void {
   }
