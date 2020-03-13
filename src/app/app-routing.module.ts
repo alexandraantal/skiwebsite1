@@ -1,3 +1,4 @@
+import { AdminComponent } from './admin/admin.component';
 import { ContactComponent } from './contact/contact.component';
 import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
@@ -15,7 +16,9 @@ const routes: Routes = [
   { path:'contact', component: ContactComponent},
   { path: 'signup', component: SignupComponent },
   { path: 'login-email', component: EmailComponent },
-  { path: 'members', component: MembersComponent, canActivate: [AuthGuard] }
+  { path: 'members', component: MembersComponent, canActivate: [AuthGuard] },
+  // data: {roles: ["user", "admin"]}
+  { path: 'admin', component: AdminComponent, canActivate: [AuthGuard], data: {roles: ["admin"]}}
 ];
 
 @NgModule({

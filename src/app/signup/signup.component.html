@@ -75,18 +75,18 @@
       type="password"
       class="input is-primary" 
       name="password" 
-      placeholder="*****" 
+      placeholder="(min. 6 caractere)" 
       [(ngModel)]="password"
       #passwordInput="ngModel"
+      minlength="6"
       required>
       <span class="icon is-small is-left">
         <fa-icon [icon]="faLock"></fa-icon>
       </span>
   </div>
   <div class="help is-error" *ngIf="passwordInput.invalid && passwordInput.touched">
-    Parola este necesara.
+    Parola invalida
   </div>
-
   </div>
 
   <button 

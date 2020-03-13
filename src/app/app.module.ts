@@ -1,3 +1,4 @@
+import { AngularFirestore } from '@angular/fire/firestore';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -22,6 +23,7 @@ import { SignupComponent } from './signup/signup.component';
 import { AuthGuard } from './auth.service';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { AdminComponent } from './admin/admin.component';
  
 
 export const firebaseConfig = {
@@ -42,7 +44,8 @@ export const firebaseConfig = {
     ContactComponent,
     EmailComponent,
     MembersComponent,
-    SignupComponent
+    SignupComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +56,8 @@ export const firebaseConfig = {
     AngularFireAuthModule,
     FontAwesomeModule
   ],
-  providers: [AuthGuard],
+  providers: [AuthGuard,
+    AngularFirestore],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

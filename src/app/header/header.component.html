@@ -18,10 +18,10 @@
       <a class="navbar-item" routerLink="">Acasa</a>
       <!-- <a class="navbar-item" routerLink="contact">Contact</a> -->
     </div>
-  </div>
 
-  <div *ngIf="!isLoggedIn">
-  <div class="navbar-end">
+
+  <!-- <div *ngIf="!isLoggedIn"> -->
+  <div class="navbar-end" *ngIf="!userStatus">
     <div class="navbar-item">
       <div class="buttons">
         <a class="button is-primary" routerLink="signup">
@@ -33,8 +33,23 @@
       </div>
     </div>
   </div>
-</div>
 
+
+<!-- <div *ngIf="isLoggedIn"> -->
+  <div class="navbar-end" *ngIf="userStatus">
+    <div class="navbar-item">
+      <div class="buttons">
+        <a  *ngIf="userStatus.role === 'admin'" class="button is-light" routerLink="admin">
+          Admin  
+        </a>
+      <a class="button is-danger" (click)="logout()">
+        Logout
+      </a>
+    </div>
+    </div>
+  </div>
+
+</div>
 
   </nav>
   
