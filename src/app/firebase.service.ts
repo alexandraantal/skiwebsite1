@@ -68,6 +68,9 @@ export class FirebaseService {
             this.currentUser = userRef.data();
             //setUserStatus
             this.setUserStatus(this.currentUser)
+
+            //console.log(this.currentUser.name);
+
             if(userRef.data().role !== "admin") {
               this.router.navigate(["/members"]);
             }else{
@@ -87,7 +90,7 @@ export class FirebaseService {
       this.currentUser = null;
       //set the listenener to be null, for the UI to react
       this.setUserStatus(null);
-      this.ngZone.run(() => this.router.navigate(["/login-email"]));
+      this.ngZone.run(() => this.router.navigate(["/"]));
 
     }).catch((err) => {
       console.log(err);
@@ -113,10 +116,7 @@ export class FirebaseService {
           })
         })
       }else{
-        //this is the error you where looking at the video that I wasn't able to fix
-        //the function is running on refresh so its checking if the user is logged in or not
-        //hence the redirect to the login
-        this.ngZone.run(() => this.router.navigate(["/login-email"]));
+        this.ngZone.run(() => this.router.navigate(["/"]));
       }
     })
   }

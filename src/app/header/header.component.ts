@@ -50,6 +50,8 @@ ngOnInit(){
 
   this.firebaseService.userStatusChanges.subscribe(x => this.userStatus = x);
   console.log(this.userStatus)
+
+  
 }
 
 }

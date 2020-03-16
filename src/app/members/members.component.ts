@@ -1,3 +1,4 @@
+import { FirebaseService } from './../firebase.service';
 import { Component, OnInit } from '@angular/core';
 
 import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
@@ -7,10 +8,10 @@ import { of } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
 import * as firebase from 'firebase/app';
 import { Router } from '@angular/router';
- import { moveIn, fallIn, moveInLeft } from '../router.animations';
+import { moveIn, fallIn, moveInLeft } from '../router.animations';
 
- var username;
- var userType; 
+
+
 
 @Component({
   selector: 'app-members',
@@ -24,23 +25,25 @@ export class MembersComponent implements OnInit {
   state: string = '';
   email: string;
 
-  Name: any;
+  // username: any;
 
 
-  constructor(public af: AngularFireAuth,private router: Router) {
+  constructor(public af: AngularFireAuth,private router: Router, private firebaseService: FirebaseService) {
 
-    this.af.authState.subscribe(auth => {
-      if(auth) {
-        this.name = auth;
-        this.email = this.name.email;
+    // this.af.authState.subscribe(auth => {
+    //   if(auth) {
+    //     this.name = auth;
+    //     this.email = this.name.email;
 
-        const db = firebase.database();
-        const users= db.ref('/users/');
-      }
+    //     const db = firebase.database();
+    //     const users= db.ref('/users/');
+    //   }
         
-    });
-
+    // });
   }
+
+  userStatus = this.firebaseService.userStatus;
+  currentUser = this.firebaseService.currentUser;
 
   ngOnInit(): void {
     // var userId = firebase.auth().currentUser.uid;
@@ -55,6 +58,15 @@ export class MembersComponent implements OnInit {
     //   });
 
     //   console.log(userType);
+
+    this.firebaseService.userChanges();
+
+    this.firebaseService.userStatusChanges.subscribe(x => this.userStatus = x);
+   // console.log(this.currentUser.name)
+
+
+    document.getElementById("username").innerHTML = this.currentUser.name;
+  
   }
 
 }
