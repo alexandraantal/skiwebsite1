@@ -5,17 +5,13 @@
     <article class="media">
     <figure class="media-left">
       <p class="image is-64x64">
-        <img src="https://bulma.io/images/placeholders/128x128.png">
+        <img src='/assets/image/ski.png'>
       </p>
     </figure>
     <div class="media-content">
       <div class="content">
         <p>
-          <!-- <strong>{{ post.payload.doc.data().title }} </strong> <small> Username </small>
-          <br>
-          {{ post.payload.doc.data().message }} -->
-
-          <strong>{{ post.title }} </strong> <small> Username </small>
+          <strong>{{ post.title }} </strong> <small> {{ post.user }} </small>
           <br>
           {{ post.message }}
 
@@ -32,6 +28,11 @@
           <a class="level-item">
             <span class="icon is-small"><i class="fas fa-heart"></i></span>
           </a>
+        </div>
+        <div class="level-right">
+            <p>
+                {{post.created.toDate() | date: 'dd MMM hh:mm'}}
+            </p>
         </div>
       </nav>
     </div>

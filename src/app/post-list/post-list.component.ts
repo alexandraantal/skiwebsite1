@@ -14,8 +14,6 @@ import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/fires
 export class PostListComponent implements OnInit {
 
 
-  Posts;
-
   postsCollectionRef: AngularFirestoreCollection<Post>;
   posts$: Observable<Post[]>;
 
@@ -23,6 +21,8 @@ export class PostListComponent implements OnInit {
 
     this.postsCollectionRef = this.afs.collection<Post>('posts', ref => ref.orderBy('created', 'desc'));
     this.posts$ = this.postsCollectionRef.valueChanges();
+
+    // console.log(this.posts$)
 
   }
 

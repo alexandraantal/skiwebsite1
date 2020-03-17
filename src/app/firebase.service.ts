@@ -127,7 +127,7 @@ export class FirebaseService {
   
     // add the post to the "posts" database
     let post = {
-     user: this.userStatus.id,
+     user: this.userStatus.name,
      title: title,
      message: message,
      created: firebase.firestore.FieldValue.serverTimestamp()
