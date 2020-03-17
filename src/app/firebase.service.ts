@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import {Router} from "@angular/router";
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable, BehaviorSubject } from 'rxjs';
+import * as firebase from 'firebase/app';
 
 @Injectable({
   providedIn: 'root'
@@ -128,7 +129,8 @@ export class FirebaseService {
     let post = {
      user: this.userStatus.id,
      title: title,
-     message: message
+     message: message,
+     created: firebase.firestore.FieldValue.serverTimestamp()
     }
     
     //add the post to the database
@@ -147,10 +149,6 @@ export class FirebaseService {
     })
   
  }
-
- getPosts() {
-  return this.firestore.collection("posts").snapshotChanges();
-}
 
 }
 

@@ -1,6 +1,7 @@
 
 <div class="box content" >
-    <div *ngFor="let post of Posts">
+    <!-- <div *ngFor="let post of Posts"> -->
+        <div *ngFor="let post of posts$ | async" [class.completed]="post.completed">
     <article class="media">
     <figure class="media-left">
       <p class="image is-64x64">
@@ -10,9 +11,14 @@
     <div class="media-content">
       <div class="content">
         <p>
-          <strong>{{ post.payload.doc.data().title }} </strong> <small> Username </small>
+          <!-- <strong>{{ post.payload.doc.data().title }} </strong> <small> Username </small>
           <br>
-          {{ post.payload.doc.data().message }}
+          {{ post.payload.doc.data().message }} -->
+
+          <strong>{{ post.title }} </strong> <small> Username </small>
+          <br>
+          {{ post.message }}
+
         </p>
       </div>
       <nav class="level is-mobile">
