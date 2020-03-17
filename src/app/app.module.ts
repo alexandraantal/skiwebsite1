@@ -24,6 +24,8 @@ import { AuthGuard } from './auth.service';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AdminComponent } from './admin/admin.component';
+import { ForumComponent } from './forum/forum.component';
+import { PostListComponent } from './post-list/post-list.component';
  
 
 export const firebaseConfig = {
@@ -45,7 +47,9 @@ export const firebaseConfig = {
     EmailComponent,
     MembersComponent,
     SignupComponent,
-    AdminComponent
+    AdminComponent,
+    ForumComponent,
+    PostListComponent
   ],
   imports: [
     BrowserModule,

@@ -108,17 +108,50 @@ export class FirebaseService {
             this.setUserStatus(this.currentUser);
             console.log(this.userStatus)
             
-            if(userRef.data().role !== "admin") {
-             this.ngZone.run(() => this.router.navigate(["/members"]));
-            }else{
-             this.ngZone.run(() => this.router.navigate(["/admin"])); 
-            }
+              if(userRef.data().role !== "admin") {
+               this.ngZone.run(() => this.router.navigate(["/members"]));
+              }else{
+               this.ngZone.run(() => this.router.navigate(["/admin"])); 
+              }
           })
         })
       }else{
-        this.ngZone.run(() => this.router.navigate(["/"]));
+        // this.ngZone.run(() => this.router.navigate(["/"]));
       }
     })
   }
 
+
+  newPost(title:string, message:string){
+  
+    // add the post to the "posts" database
+    let post = {
+     user: this.userStatus.id,
+     title: title,
+     message: message
+    }
+    
+    //add the post to the database
+    this.firestore.collection("posts").add(post)
+    .then(post => {
+     post.get().then(x => {
+       //return the user data
+       console.log(x.data());
+      //  this.currentUser = x.data();
+      //  this.setUserStatus(this.currentUser);
+       this.router.navigate(["/forum"]);
+     })
+    }
+    ).catch(err => {
+      console.log(err);
+    })
+  
+ }
+
+ getPosts() {
+  return this.firestore.collection("posts").snapshotChanges();
 }
+
+}
+
+

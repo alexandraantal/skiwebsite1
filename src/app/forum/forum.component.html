@@ -1,0 +1,150 @@
+<section class="hero is-warning">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Forum
+      </h1>
+      
+    </div>
+  </div>
+</section>
+
+
+
+<section class="container">
+  <div class="columns">
+    <div class="column is-3">
+      <section class="section">
+  
+      <a class="button is-primary is-block is-alt is-large" (click)="buttonPress()">Postare Noua</a>
+
+      <div class="modal" [ngClass]="{ 'is-active' : isModalActive }">
+        <div class="modal-background" (click)="toggleModal()"></div>
+        <div class="modal-card">
+          <header class="modal-card-head">
+            <p class="modal-card-title">Postare Noua</p>
+            <button class="delete" aria-label="close" (click)="toggleModal()"></button>
+          </header>
+          <section class="modal-card-body">
+          
+            <form #formData="ngForm" (ngSubmit)="onSubmit(formData)" id="myForm">
+
+              <div class="field">
+                <label class="label is-medium has-background-white">Titlu</label>
+                  <div class="control">
+                <input 
+                class="input is-primary" 
+                type="text"
+                name="title" 
+                placeholder="Titlul postarii" 
+                [(ngModel)]="title"
+                required>
+              </div>
+              </div>
+            
+            <div class="field">
+              <label class="label is-medium has-background-white">Mesaj</label>
+                <div class="control">
+              <textarea 
+              class="textarea is-primary" 
+              type="text"
+              name="message" 
+              placeholder="La ce te gandesti?" 
+              [(ngModel)]="message"
+              required>
+              </textarea>
+            </div>
+            </div>
+
+              <div class="buttons">
+              <button 
+              type="submit" 
+              class="button is-primary"
+              [disabled]="formData.invalid"
+              >
+              Publica
+            </button>
+            <button class="button is-light" (click)="toggleModal()">Anuleaza</button>
+              </div>
+            </form>
+
+          </section>
+        </div>
+      </div>
+
+      <!-- <a href='https://pngtree.com/so/cartoon'>cartoon png from pngtree.com</a> -->
+      <img src='/assets/image/forum.png'>
+      
+    </section>
+    </div>
+    <div class="column is-9">
+      <section class="section">
+      <!-- <div class="box content"> -->
+        <!-- <article class="media">
+          <figure class="media-left">
+            <p class="image is-64x64">
+              <img src="https://bulma.io/images/placeholders/128x128.png">
+            </p>
+          </figure>
+          <div class="media-content">
+            <div class="content">
+              <p>
+                <strong>John Smith</strong> 
+                <br>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.
+              </p>
+            </div>
+            <nav class="level is-mobile">
+              <div class="level-left">
+                <a class="level-item">
+                  <span class="icon is-small"><i class="fas fa-reply"></i></span>
+                </a>
+                <a class="level-item">
+                  <span class="icon is-small"><i class="fas fa-retweet"></i></span>
+                </a>
+                <a class="level-item">
+                  <span class="icon is-small"><i class="fas fa-heart"></i></span>
+                </a>
+              </div>
+            </nav>
+          </div>
+        </article>
+        <article class="media">
+          <figure class="media-left">
+            <p class="image is-64x64">
+              <img src="https://bulma.io/images/placeholders/128x128.png">
+            </p>
+          </figure>
+          <div class="media-content">
+            <div class="content">
+              <p>
+                <strong>John Smith</strong> 
+                <br>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.
+              </p>
+            </div>
+            <nav class="level is-mobile">
+              <div class="level-left">
+                <a class="level-item">
+                  <span class="icon is-small"><i class="fas fa-reply"></i></span>
+                </a>
+                <a class="level-item">
+                  <span class="icon is-small"><i class="fas fa-retweet"></i></span>
+                </a>
+                <a class="level-item">
+                  <span class="icon is-small"><i class="fas fa-heart"></i></span>
+                </a>
+              </div>
+            </nav>
+          </div>
+          <div class="media-right">
+            <button class="delete"></button>
+          </div>
+        </article> -->
+
+        <app-post-list></app-post-list>
+      <!-- </div> -->
+    </section>
+    </div>
+  </div>
+</section>

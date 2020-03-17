@@ -1,3 +1,4 @@
+import { ForumComponent } from './forum/forum.component';
 import { AdminComponent } from './admin/admin.component';
 import { ContactComponent } from './contact/contact.component';
 import { HomeComponent } from './home/home.component';
@@ -18,7 +19,8 @@ const routes: Routes = [
   { path: 'login-email', component: EmailComponent },
   { path: 'members', component: MembersComponent, canActivate: [AuthGuard] },
   // data: {roles: ["user", "admin"]}
-  { path: 'admin', component: AdminComponent, canActivate: [AuthGuard], data: {roles: ["admin"]}}
+  { path: 'admin', component: AdminComponent, canActivate: [AuthGuard], data: {roles: ["admin"]}},
+  { path: 'forum', component: ForumComponent }
 ];
 
 @NgModule({

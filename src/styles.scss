@@ -1,11 +1,16 @@
 $skigreen: #0B8C68;
 $skired: #F24949;
 $skiyellow: #F2CD5E;
+$skilightblue: #69BFAF;
+
 
 $danger: $skired;
 $primary: $skigreen;
 $info: $skiyellow;
+$warning: $skilightblue;
 
+$modal-card-head-background-color: #FFFFFF;
+$background: #FFFFFF;
 
 @import 'node_modules/bulma/sass/utilities/_all';
 @import 'node_modules/bulma/sass/base/_all';
