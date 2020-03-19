@@ -1,3 +1,4 @@
+import { PostService } from './../post.service';
 import { Post } from './../post.model';
 import { FirebaseService } from './../firebase.service';
 import { Component, OnInit } from '@angular/core';
@@ -6,6 +7,8 @@ import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs/Observable';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 
+import { faComment, faTrash } from '@fortawesome/free-solid-svg-icons';
+
 @Component({
   selector: 'app-post-list',
   templateUrl: './post-list.component.html',
@@ -13,22 +16,44 @@ import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/fires
 })
 export class PostListComponent implements OnInit {
 
+  faComment = faComment;
+  faTrash = faTrash;
 
-  postsCollectionRef: AngularFirestoreCollection<Post>;
-  posts$: Observable<Post[]>;
+  // postsCollectionRef: AngularFirestoreCollection<Post>;
+  // posts$: Observable<Post[]>;
 
-  constructor(private firebaseService: FirebaseService, private afs: AngularFirestore) { 
+  posts: Post[];
 
-    this.postsCollectionRef = this.afs.collection<Post>('posts', ref => ref.orderBy('created', 'desc'));
-    this.posts$ = this.postsCollectionRef.valueChanges();
+  constructor(private firebaseService: FirebaseService, private afs: AngularFirestore, private postService: PostService) { 
 
-    // console.log(this.posts$)
+    // this.postsCollectionRef = this.afs.collection<Post>('posts', ref => ref.orderBy('created', 'desc'));
+    // this.posts$ = this.postsCollectionRef.valueChanges();
+
+    //console.log(this.posts$)
 
   }
+
+  userStatus = this.firebaseService.userStatus;
 
   ngOnInit(){
 
+    this.postService.getPosts().subscribe(data => {
+      this.posts = data.map(e => {
+        return {
+          id: e.payload.doc.id,
+          ...<any>e.payload.doc.data()
+        } as Post;
+      })
+    });
   }
 
+  create(post: Post){
+    this.postService.createPost(post);
+}
+
+  delete(id: string) {
+  this.postService.deletePost(id);
+} 
+  
 
 }

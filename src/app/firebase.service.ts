@@ -1,3 +1,5 @@
+import { Post } from './post.model';
+import { PostService } from './post.service';
 import { Injectable, NgZone } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import {Router} from "@angular/router";
@@ -15,7 +17,8 @@ export class FirebaseService {
   public currentUser: any;
   public userStatus: any;
   public userStatusChanges: BehaviorSubject<string> = new BehaviorSubject<string>(this.userStatus);
-  
+
+   
 
   setUserStatus(userStatus: any): void {
     this.userStatus = userStatus;
@@ -125,29 +128,31 @@ export class FirebaseService {
 
   newPost(title:string, message:string){
   
-    // add the post to the "posts" database
+    //add the post to the "posts" database
     let post = {
      user: this.userStatus.name,
      title: title,
      message: message,
      created: firebase.firestore.FieldValue.serverTimestamp()
     }
+
     
-    //add the post to the database
-    this.firestore.collection("posts").add(post)
-    .then(post => {
-     post.get().then(x => {
-       //return the user data
-       console.log(x.data());
-      //  this.currentUser = x.data();
-      //  this.setUserStatus(this.currentUser);
-       this.router.navigate(["/forum"]);
-     })
-    }
-    ).catch(err => {
-      console.log(err);
-    })
-  
+    // //add the post to the database
+    // this.firestore.collection("posts").add(post)
+    // .then(post => {
+    //  post.get().then(x => {
+    //    //return the user data
+    //    console.log(x.data());
+    //   //  this.currentUser = x.data();
+    //   //  this.setUserStatus(this.currentUser);
+    //    this.router.navigate(["/forum"]);
+    //  })
+    // }
+    // ).catch(err => {
+    //   console.log(err);
+    // })
+
+    this.firestore.collection('posts').add(post);
  }
 
 }

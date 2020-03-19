@@ -1,18 +1,35 @@
-
-<div class="box content" >
-    <!-- <div *ngFor="let post of Posts"> -->
-        <div *ngFor="let post of posts$ | async" [class.completed]="post.completed">
+<div class="box content has-text-centered" *ngIf="(posts)?.length==0">
+  <p><strong> Nu exista postari!</strong></p>
+</div>
+<div class="box content" *ngFor="let post of posts" [class.completed]="post.completed" >
     <article class="media">
     <figure class="media-left">
       <p class="image is-64x64">
         <img src='/assets/image/ski.png'>
       </p>
     </figure>
+
     <div class="media-content">
       <div class="content">
-        <p>
-          <strong>{{ post.title }} </strong> <small> {{ post.user }} </small>
-          <br>
+        <!-- <p> -->
+
+          <nav class="level is-mobile">
+            <div class="level-left">
+              <p>
+                <strong>{{ post.title }} </strong> <small> {{ post.user }} </small>
+              </p>
+            </div>
+            <div class="level-right">
+              <a *ngIf="userStatus && (userStatus.role === 'admin')" class="level-item">
+              <span class="icon is-small is-right">
+                <fa-icon [icon]="faTrash" (click)="delete(post.id)"></fa-icon>
+              </span>   
+              </a> 
+            </div>
+          </nav>
+
+        
+          <p>
           {{ post.message }}
 
         </p>
@@ -20,13 +37,9 @@
       <nav class="level is-mobile">
         <div class="level-left">
           <a class="level-item">
-            <span class="icon is-small"><i class="fas fa-reply"></i></span>
-          </a>
-          <a class="level-item">
-            <span class="icon is-small"><i class="fas fa-retweet"></i></span>
-          </a>
-          <a class="level-item">
-            <span class="icon is-small"><i class="fas fa-heart"></i></span>
+            <span class="icon is-small">
+              <fa-icon [icon]="faComment"></fa-icon>
+            </span>
           </a>
         </div>
         <div class="level-right">
@@ -37,5 +50,4 @@
       </nav>
     </div>
   </article>
-</div>
 </div>
