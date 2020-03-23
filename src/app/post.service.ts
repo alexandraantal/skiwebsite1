@@ -10,7 +10,7 @@ export class PostService {
   constructor(private firestore: AngularFirestore) { }
 
   getPosts() {
-    return this.firestore.collection('posts').snapshotChanges();
+    return this.firestore.collection<Post>('posts', ref => ref.orderBy('created', 'desc')).snapshotChanges();
 }
 
 deletePost(postId: string){

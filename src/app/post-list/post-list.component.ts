@@ -1,3 +1,4 @@
+import { Comm } from './../comm.model';
 import { PostService } from './../post.service';
 import { Post } from './../post.model';
 import { FirebaseService } from './../firebase.service';
@@ -18,11 +19,14 @@ export class PostListComponent implements OnInit {
 
   faComment = faComment;
   faTrash = faTrash;
+  comment: string;
 
   // postsCollectionRef: AngularFirestoreCollection<Post>;
   // posts$: Observable<Post[]>;
 
   posts: Post[];
+  comments: Comm[];
+
 
   constructor(private firebaseService: FirebaseService, private afs: AngularFirestore, private postService: PostService) { 
 
@@ -45,6 +49,7 @@ export class PostListComponent implements OnInit {
         } as Post;
       })
     });
+
   }
 
   create(post: Post){
@@ -54,6 +59,21 @@ export class PostListComponent implements OnInit {
   delete(id: string) {
   this.postService.deletePost(id);
 } 
+
+onSubmit(formData, id: string){
+  if(formData.valid) {
+    this.firebaseService.newComment(formData.value.comment, id);
+    var resetForm=<HTMLFormElement>document.getElementById("myForm");
+    resetForm.reset();
+  }
+
+}
+
+showVar: boolean = false;
+
+toggleComments(){
+    this.showVar = !this.showVar;
+}
   
 
 }

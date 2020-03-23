@@ -1,53 +1,57 @@
 <div class="box content has-text-centered" *ngIf="(posts)?.length==0">
   <p><strong> Nu exista postari!</strong></p>
 </div>
-<div class="box content" *ngFor="let post of posts" [class.completed]="post.completed" >
-    <article class="media">
-    <figure class="media-left">
-      <p class="image is-64x64">
-        <img src='/assets/image/ski.png'>
+<div *ngFor="let post of posts" [class.completed]="post.completed">
+<div class="card" >
+  <header class="card-header">
+     
+    <p class="card-header-title" style="font-size: 27px">{{ post.title }} </p> &nbsp;&nbsp;
+      
+    <a  *ngIf="userStatus && (userStatus.role === 'admin')">
+      <span class="icon is-large is-right fas fa-lg">
+        <fa-icon [icon]="faTrash" (click)="delete(post.id)"></fa-icon>
+      </span> 
+    </a>
+  </header>
+  <div class="card-content">
+    <div class="content">
+      <p>
+      {{ post.message }}
+    </p>
+    <p ><span style="float: left;">{{ post.user }} &nbsp;&nbsp; </span> 
+      <span style="float: right;"> <i><small>{{post.created.toDate() | date: 'dd MMM hh:mm'}}</small></i></span>
       </p>
-    </figure>
+     </div>
+  </div>
 
-    <div class="media-content">
-      <div class="content">
-        <!-- <p> -->
-
-          <nav class="level is-mobile">
-            <div class="level-left">
-              <p>
-                <strong>{{ post.title }} </strong> <small> {{ post.user }} </small>
-              </p>
-            </div>
-            <div class="level-right">
-              <a *ngIf="userStatus && (userStatus.role === 'admin')" class="level-item">
-              <span class="icon is-small is-right">
-                <fa-icon [icon]="faTrash" (click)="delete(post.id)"></fa-icon>
-              </span>   
-              </a> 
-            </div>
-          </nav>
-
-        
-          <p>
-          {{ post.message }}
-
-        </p>
-      </div>
-      <nav class="level is-mobile">
-        <div class="level-left">
-          <a class="level-item">
-            <span class="icon is-small">
-              <fa-icon [icon]="faComment"></fa-icon>
-            </span>
-          </a>
-        </div>
-        <div class="level-right">
-            <p>
-                {{post.created.toDate() | date: 'dd MMM hh:mm'}}
-            </p>
-        </div>
-      </nav>
+<form #formData="ngForm" (ngSubmit)="onSubmit(formData, post.id)" id="myForm">
+  <div class="input-group">
+    &nbsp;&nbsp; 
+    <input 
+    class="input is-rounded is-primary" 
+    type="text"
+     name="comment" 
+     placeholder="Adauga un comentariu"
+     [(ngModel)]="comment"
+     required>
+  &nbsp;&nbsp;
+  <button 
+  type="submit" 
+  class="button is-primary"
+  [disabled]="formData.invalid"
+  >
+  Trimite
+</button> &nbsp;&nbsp;
+</div>
+</form>
+  <footer class="card-footer">
+    <a  class="card-footer-item" (click)="toggleComments()">Comentarii</a>
+  </footer>
+  <footer class="card-footer">
+    <div class="card-footer-item" *ngIf="showVar"> 
+     
     </div>
-  </article>
+  </footer>
+ 
+</div>
 </div>

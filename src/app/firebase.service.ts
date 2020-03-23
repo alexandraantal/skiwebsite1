@@ -1,3 +1,4 @@
+import { Comm } from './comm.model';
 import { Post } from './post.model';
 import { PostService } from './post.service';
 import { Injectable, NgZone } from '@angular/core';
@@ -154,6 +155,17 @@ export class FirebaseService {
 
     this.firestore.collection('posts').add(post);
  }
+
+ newComment(message:string, id:string){
+  
+  let comment = {
+   user: this.userStatus.name,
+   message: message,
+   created: firebase.firestore.FieldValue.serverTimestamp()
+  }
+  console.log(comment)
+   this.firestore.collection('posts').doc(id).collection('comments').add(comment);
+}
 
 }
 
