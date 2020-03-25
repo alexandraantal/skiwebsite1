@@ -26,6 +26,11 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AdminComponent } from './admin/admin.component';
 import { ForumComponent } from './forum/forum.component';
 import { PostListComponent } from './post-list/post-list.component';
+import { CazareComponent } from './cazare/cazare.component';
+
+import { AngularFireStorageModule } from 'angularfire2/storage';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CazareListComponent } from './cazare-list/cazare-list.component'
  
 
 export const firebaseConfig = {
@@ -49,7 +54,9 @@ export const firebaseConfig = {
     SignupComponent,
     AdminComponent,
     ForumComponent,
-    PostListComponent
+    PostListComponent,
+    CazareComponent,
+    CazareListComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +65,9 @@ export const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    AngularFireStorageModule,
+    ReactiveFormsModule
   ],
   providers: [AuthGuard,
     AngularFirestore],

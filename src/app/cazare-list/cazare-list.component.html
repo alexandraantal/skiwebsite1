@@ -1,0 +1,35 @@
+<div class="section has-text-centered" *ngIf="(cazari)?.length==0">
+    <p><strong> Nu exista cazari!</strong></p>
+</div>
+
+<section class="section">
+    <div class="container" >
+        <div class="columns is-multiline">
+            <div class="column is-12-mobile is-4-tablet is-4-desktop" *ngFor="let cazare of cazari" [class.completed]="cazare.completed">
+                 <div class="card is-shadowless is-slightly-rounded">
+
+<div class="card-image">
+            <figure class="image">
+        <a href="#">
+         <img src={{cazare.imageURL}} class="is-slightly-rounded" />
+                    </a>
+    </figure>
+</div>
+<div class="card-content">
+    <div class="content">
+        <p>
+            <span class="title is-4 is-capitalized">
+                <a class="has-text-black" href="#">{{cazare.name}}</a>
+            </span>
+            <br>
+            <span class="m-t-tiny block">{{cazare.category}}</span>
+        </p>
+        <p > {{cazare.description}}      </p>
+     </div>
+</div>
+            </div>                
+        </div>
+        
+     </div>
+    </div>
+</section>

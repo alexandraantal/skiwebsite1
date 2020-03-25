@@ -1,3 +1,4 @@
+import { CazareComponent } from './cazare/cazare.component';
 import { ForumComponent } from './forum/forum.component';
 import { AdminComponent } from './admin/admin.component';
 import { ContactComponent } from './contact/contact.component';
@@ -20,7 +21,8 @@ const routes: Routes = [
   { path: 'members', component: MembersComponent, canActivate: [AuthGuard] },
   // data: {roles: ["user", "admin"]}
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuard], data: {roles: ["admin"]}},
-  { path: 'forum', component: ForumComponent }
+  { path: 'forum', component: ForumComponent },
+  { path: 'cazare', component: CazareComponent }
 ];
 
 @NgModule({
