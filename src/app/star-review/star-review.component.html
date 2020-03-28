@@ -1,0 +1,33 @@
+<h4>
+<span class="title is-5 ">
+    <a class="has-text-black">{{ avgRating | async }}</a>
+</span>
+</h4>
+
+<fieldset>Adauda o nota</fieldset>
+
+
+<fieldset class="rating">
+  <ng-container  *ngFor="let num of [5, 4, 3, 2, 1]">
+      <!-- full star -->
+      <!-- <input (click)="starHandler(num)" 
+            [id]="'star'+num "
+            [value]="num-0.5"
+            name="rating" 
+            type="radio" />
+
+      <label class="full" [for]="'star'+num"></label> -->
+
+      <label class="full" > 
+      <input (click)="starHandler(num)" 
+           
+            [value]="num-0.5"
+            name="rating" 
+            type="radio" />
+
+     </label>
+
+
+  </ng-container>
+</fieldset>
+

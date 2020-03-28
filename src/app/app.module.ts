@@ -30,7 +30,8 @@ import { CazareComponent } from './cazare/cazare.component';
 
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { ReactiveFormsModule } from '@angular/forms';
-import { CazareListComponent } from './cazare-list/cazare-list.component'
+import { CazareListComponent } from './cazare-list/cazare-list.component';
+import { StarReviewComponent } from './star-review/star-review.component'
  
 
 export const firebaseConfig = {
@@ -56,7 +57,8 @@ export const firebaseConfig = {
     ForumComponent,
     PostListComponent,
     CazareComponent,
-    CazareListComponent
+    CazareListComponent,
+    StarReviewComponent
   ],
   imports: [
     BrowserModule,
