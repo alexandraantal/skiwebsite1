@@ -1,0 +1,30 @@
+<form #formData="ngForm" (ngSubmit)="onSubmit(formData)" id="CommentForm">
+    <div class="input-group">
+      &nbsp;&nbsp; 
+      <input 
+      class="input is-rounded is-primary" 
+      type="text"
+       name="message" 
+       placeholder="Adauga un comentariu"
+       [(ngModel)]="message"
+       required>
+    &nbsp;&nbsp;
+    <button 
+    type="submit" 
+    class="button is-primary"
+    [disabled]="formData.invalid"
+    >
+    Trimite
+  </button> &nbsp;&nbsp;
+  </div>
+  </form>
+    <footer class="card-footer">
+      <a  class="card-footer-item" (click)="toggleComments()">Comentarii</a>
+    </footer>
+    <div *ngIf="showVar">
+    <div class="card-footer" *ngFor="let comment of comments" [class.completed]="comment.completed">
+            <div class="card-footer-item">
+                {{comment.userId}} : {{comment.message}}
+            </div>
+        </div>
+</div>

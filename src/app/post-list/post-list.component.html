@@ -24,34 +24,7 @@
      </div>
   </div>
 
-<form #formData="ngForm" (ngSubmit)="onSubmit(formData, post.id)" id="myForm">
-  <div class="input-group">
-    &nbsp;&nbsp; 
-    <input 
-    class="input is-rounded is-primary" 
-    type="text"
-     name="comment" 
-     placeholder="Adauga un comentariu"
-     [(ngModel)]="comment"
-     required>
-  &nbsp;&nbsp;
-  <button 
-  type="submit" 
-  class="button is-primary"
-  [disabled]="formData.invalid"
-  >
-  Trimite
-</button> &nbsp;&nbsp;
-</div>
-</form>
-  <footer class="card-footer">
-    <a  class="card-footer-item" (click)="toggleComments()">Comentarii</a>
-  </footer>
-  <footer class="card-footer">
-    <div class="card-footer-item" *ngIf="showVar"> 
-     
-    </div>
-  </footer>
+<app-comment *ngIf="userStatus" postId={{post.id}} userId={{userStatus.name}}></app-comment>
  
 </div>
 </div>
