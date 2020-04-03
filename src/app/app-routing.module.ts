@@ -1,3 +1,4 @@
+import { PartiiComponent } from './partii/partii.component';
 import { CazareComponent } from './cazare/cazare.component';
 import { ForumComponent } from './forum/forum.component';
 import { AdminComponent } from './admin/admin.component';
@@ -22,7 +23,8 @@ const routes: Routes = [
   // data: {roles: ["user", "admin"]}
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuard], data: {roles: ["admin"]}},
   { path: 'forum', component: ForumComponent },
-  { path: 'cazare', component: CazareComponent }
+  { path: 'cazare', component: CazareComponent },
+  { path: 'partii', component: PartiiComponent }
 ];
 
 @NgModule({

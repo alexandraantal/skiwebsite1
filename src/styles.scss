@@ -1,7 +1,7 @@
 $skigreen: #0B8C68;
 $skired: #F24949;
 $skiyellow: #F2CD5E;
-$skilightblue: #69BFAF;
+$skilightblue: #6CC9BF;
 
 
 $danger: $skired;
@@ -14,6 +14,9 @@ $background: #FFFFFF;
 
 $section-padding: 2rem 1.5rem;
 // $hero-body-padding: 2rem 1.5rem;
+
+$table-striped-row-even-background-color: white;
+$table-striped-row-even-hover-background-colo: white;
 
 @import 'node_modules/bulma/sass/utilities/_all';
 @import 'node_modules/bulma/sass/base/_all';

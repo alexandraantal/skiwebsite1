@@ -1,5 +1,18 @@
-.hero {
-background-image: url('/assets/image/bg.png') !important;
-background-size: cover;
-background-position: center center;
-}
+// .hero {
+// background-image: url('/assets/image/bg.png') !important;
+// background-size: cover;
+// background-position: center center;
+// }
+
+$title-size: 5.5rem;
+$subtitle-size: 3.75rem;
+
+@import '../../../node_modules/bulma/sass/utilities/_all';
+@import '../../../node_modules/bulma/sass/base/_all';
+@import '../../../node_modules/bulma/sass/elements/button';
+@import '../../../node_modules/bulma/sass/elements/container';
+@import '../../../node_modules/bulma/sass/elements/title';
+@import '../../../node_modules/bulma/sass/form/_all';
+@import '../../../node_modules/bulma/sass/components/navbar';
+@import '../../../node_modules/bulma/sass/layout/hero';
+@import '../../../node_modules/bulma/sass/layout/section';

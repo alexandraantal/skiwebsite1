@@ -1,0 +1,199 @@
+
+    <div class="container">
+  <table class="table is-striped">
+      <thead>
+          <tr>
+              <th>Denumire</th>
+              <th>Nivel</th>
+              <th>Lungime</th>
+              <th>Nocturna</th>
+              <th>Functionare
+
+                  <img src="../../assets/image/skilift.png" width="25" height="25">
+              </th>
+          </tr>
+      </thead>
+      <tbody>
+    <tr *ngFor="let partie of partii" [class.completed]="partie.completed"> 
+    <td>{{partie.name}}</td>
+    <td>
+        <div *ngIf="partie.level=='Incepator'">
+        <span class="icon is-medium is-center">
+            <i class="fas fa-lg" style="color:#6CC9BF">
+            <fa-icon [icon]="faSquare"></fa-icon>
+          </i>
+          </span>
+        </div>
+        <div *ngIf="partie.level=='Mediu'">
+            <span class="icon is-medium is-center">
+                <i class="fas fa-lg" style="color:#F24949">
+                <fa-icon [icon]="faSquare"></fa-icon>
+              </i>
+              </span>
+        </div>
+        <div *ngIf="partie.level=='Avansat'">
+                <span class="icon is-medium is-center">
+                    <i class="fas fa-lg" style="color:#252623">
+                    <fa-icon [icon]="faSquare"></fa-icon>
+                  </i>
+                  </span>
+        </div>
+    </td>
+    <td>{{partie.length}} m</td>
+    <td>
+        <div *ngIf="partie.nocturna=='da'">
+        Da
+        </div>
+        <div *ngIf="partie.nocturna=='nu'">
+            Nu
+        </div>
+    </td>
+    <td>
+        <div *ngIf="partie.lift=='da'">
+            <span class="icon is-medium is-center">
+                <i class="fas fa-lg" style="color:#0B8C68">
+                <fa-icon [icon]="faCheck"></fa-icon>
+              </i>
+              </span>
+        </div>
+        <div *ngIf="partie.lift=='nu'">
+            <span class="icon is-medium is-center">
+                <i class="fas fa-lg" style="color:#F24949">
+                <fa-icon [icon]="faTimes"></fa-icon>
+              </i>
+              </span>
+            </div>
+
+
+    </td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<br>
+    <div class="container" style="font-size: small;">
+        <span><b>Nivel: &nbsp;</b></span>
+        <span>Incepator </span>
+        <span class="icon is-medium is-center">
+            <i class="fas" style="color:#6CC9BF">
+            <fa-icon [icon]="faSquare"></fa-icon>
+          </i>
+          </span>
+          <span>&nbsp;Mediu </span>
+          <span class="icon is-medium is-center">
+            <i class="fas" style="color:#F24949">
+            <fa-icon [icon]="faSquare"></fa-icon>
+          </i>
+          </span>
+          <span>&nbsp;Avansat </span>
+          <span class="icon is-medium is-center"> 
+            <i class="fas" style="color:#252623">
+            <fa-icon [icon]="faSquare"></fa-icon>
+          </i>
+          </span>
+          <a  *ngIf="userStatus && (userStatus.role === 'admin')">
+          <button class="button is-primary" style="float: right;" (click)="buttonPress()">Adauga partie</button>
+        </a>
+
+        <div class="modal" [ngClass]="{ 'is-active' : isModalActive }">
+          <div class="modal-background" (click)="toggleModal()"></div>
+          <div class="modal-card">
+            <header class="modal-card-head">
+              <p class="modal-card-title">Partie Noua</p>
+              <button class="delete" aria-label="close" (click)="toggleModal()"></button>
+            </header>
+            <section class="modal-card-body">
+            
+              <form [formGroup]="formTemplate" (submit)="onSubmit(formTemplate.value)">
+  
+                  <div class="formGroup">
+                      <label class="label is-medium has-background-white">Denumire</label>
+                        <div class="control">
+                      <input 
+                      class="input is-primary" 
+                      type="text"
+                      formControlName="name" 
+                      placeholder="Denumirea partiei" 
+                      required>
+                        </div>
+                    </div>
+
+                    <div class="formGroup">
+                        <label class="label is-medium has-background-white">Nivel</label>
+                        <div class="control" >
+                            <label class="radio">
+                              <input type="radio" value="Incepator" formControlName="level">
+                              Incepator
+                            </label>
+                            <label class="radio">
+                              <input type="radio" value="Mediu" formControlName="level" >
+                              Mediu
+                            </label>
+                            <label class="radio">
+                                <input type="radio" value="Avansat" formControlName="level">
+                                Avansat
+                            </label>
+                          </div>
+                      </div>
+
+                      <div class="formGroup">
+                        <label class="label is-medium has-background-white">Lungime (m)</label>
+                          <div class="control">
+                        <input 
+                        class="input is-primary" 
+                        type="number"
+                        formControlName="length" 
+                        placeholder="Lungimea partiei" 
+                        required>
+                          </div>
+                      </div> 
+
+                      <div class="formGroup">
+                        <label class="label is-medium has-background-white">Nocturna</label>
+                        <div class="control"  >
+                            <label class="radio">
+                              <input type="radio" value="da" formControlName="nocturna">
+                              Da
+                            </label>
+                            <label class="radio">
+                              <input type="radio" value="nu" formControlName="nocturna" >
+                              Nu
+                            </label>
+                          </div>
+                      </div>
+
+                      <div class="formGroup">
+                        <label class="label is-medium has-background-white">Functionare skilift</label>
+                        <div class="control" >
+                            <label class="radio">
+                                <input type="radio" value="da" formControlName="lift">
+                                Da
+                              </label>
+                              <label class="radio">
+                                <input type="radio" value="nu" formControlName="lift" >
+                                Nu
+                              </label>
+                          </div>
+                      </div>
+
+
+                  
+                <div class="buttons is-centered">
+                  <button 
+                  type="submit" 
+                  class="button is-primary"
+                  [disabled]="formTemplate.invalid"
+                  >
+                  Adauga
+                </button>
+                <button class="button is-light" (click)="toggleModal()">Anuleaza</button>
+                  </div>
+              </form>
+  
+            </section>
+          </div>
+        </div>
+
+    </div>
+  
