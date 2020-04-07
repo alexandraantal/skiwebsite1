@@ -1,3 +1,4 @@
+import { SkipassComponent } from './skipass/skipass.component';
 import { PartiiComponent } from './partii/partii.component';
 import { CazareComponent } from './cazare/cazare.component';
 import { ForumComponent } from './forum/forum.component';
@@ -24,7 +25,8 @@ const routes: Routes = [
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuard], data: {roles: ["admin"]}},
   { path: 'forum', component: ForumComponent },
   { path: 'cazare', component: CazareComponent },
-  { path: 'partii', component: PartiiComponent }
+  { path: 'partii', component: PartiiComponent },
+  { path: 'skipass', component: SkipassComponent}
 ];
 
 @NgModule({

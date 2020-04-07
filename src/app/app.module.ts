@@ -34,7 +34,8 @@ import { CazareListComponent } from './cazare-list/cazare-list.component';
 import { StarReviewComponent } from './star-review/star-review.component';
 import { CommentComponent } from './comment/comment.component';
 import { PartiiComponent } from './partii/partii.component';
-import { PartiiListComponent } from './partii-list/partii-list.component'
+import { PartiiListComponent } from './partii-list/partii-list.component';
+import { SkipassComponent } from './skipass/skipass.component'
  
 
 export const firebaseConfig = {
@@ -64,7 +65,8 @@ export const firebaseConfig = {
     StarReviewComponent,
     CommentComponent,
     PartiiComponent,
-    PartiiListComponent
+    PartiiListComponent,
+    SkipassComponent
   ],
   imports: [
     BrowserModule,
