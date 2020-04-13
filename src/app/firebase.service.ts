@@ -166,10 +166,10 @@ export class FirebaseService {
 //    this.firestore.collection('posts').doc(id).collection('comments').add(comment);
 // }
 
-newCazare(detaliiCazare){
+// newCazare(detaliiCazare){
 
-   this.firestore.collection('cazari').add(detaliiCazare);
-}
+//    this.firestore.collection('cazari').add(detaliiCazare);
+// }
 
 }
 

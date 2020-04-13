@@ -10,7 +10,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class StarReviewComponent implements OnInit {
 
-  @Input() userId;
+  // @Input() userId;
   @Input() cazareId;
 
   stars: Observable<any>;
@@ -26,14 +26,14 @@ export class StarReviewComponent implements OnInit {
     
     this.avgRating = this.stars.map(arr => {
       const ratings = arr.map(v => v.value)
-      return ratings.length ? ratings.reduce((total, val) => total + val) / arr.length : 'Nu exista note'
+      return ratings.length ? 'Nota: '+ratings.reduce((total, val) => total + val) / arr.length : 'Nu exista note'
     })
   }
 
-  starHandler(value) {
-    console.log("am dat click")
-    this.starService.setStar(this.userId, this.cazareId, value)
-  }
+  // starHandler(value) {
+  //   console.log("am dat click")
+  //   this.starService.setStar(this.userId, this.cazareId, value)
+  // }
 
 
 }

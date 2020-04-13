@@ -1,3 +1,4 @@
+import { AngularFirestore } from '@angular/fire/firestore';
 import { Cazare } from './../cazare.model';
 import { FirebaseService } from './../firebase.service';
 import { CazareService } from './../cazare.service';
@@ -10,7 +11,7 @@ import { finalize } from "rxjs/operators";
 
 import { AngularFireStorage } from '@angular/fire/storage';
 
-import { faUpload} from '@fortawesome/free-solid-svg-icons';
+import { faUpload, faTrash, faEdit} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-cazare-list',
@@ -23,6 +24,8 @@ export class CazareListComponent implements OnInit {
   cazari: Cazare[];
 
   faUpload = faUpload;
+  faTrash = faTrash;
+  faEdit = faEdit;
 
   imgSrc: string;
   selectedImage: any = null;
@@ -35,10 +38,14 @@ export class CazareListComponent implements OnInit {
     name: new FormControl(''),
     description: new FormControl(''),
     category: new FormControl(''),
+    link: new FormControl(''),
     imageURL: new FormControl('')
   })
 
-  constructor(private firebaseService: FirebaseService, private storage: AngularFireStorage, private router: Router, private service: CazareService) { }
+  isUpdate: boolean = false;
+  editId: string;
+
+  constructor(private firebaseService: FirebaseService, private storage: AngularFireStorage, private router: Router, private service: CazareService,private firestore: AngularFirestore) { }
 
   userStatus = this.firebaseService.userStatus;
   
@@ -67,27 +74,83 @@ export class CazareListComponent implements OnInit {
   this.service.deleteCazare(id);
 } 
 
+onEdit(cazare: Cazare,id: string){
+  this.isModalActive=true;
+    this.isUpdate = true; 
+    this.editId = id;
+
+    this.formTemplate.patchValue({
+      name: cazare.name,
+      description: cazare.description,
+      category: cazare.category,
+      link: cazare.link,
+      imageURL: cazare.imageUrl  
+    })
+
+}
+
 buttonPress(){
   this.isModalActive = !this.isModalActive;
 }
 
+// onSubmit(formValue) {
+// this.isSubmitted = true;
+// if (this.formTemplate.valid) {
+//   var filePath = `images/${this.selectedImage.name}_${new Date().getTime()}`;
+//   const fileRef = this.storage.ref(filePath);
+//   this.storage.upload(filePath, this.selectedImage).snapshotChanges().pipe(
+//     finalize(() => {
+//       fileRef.getDownloadURL().subscribe((url) => {
+//         formValue['imageURL'] = url;
+//         this.firebaseService.newCazare(formValue);
+//         this.resetForm();
+//         this.isModalActive=false;
+//       })
+//     })
+//   ).subscribe();
+// }
+// }
+
 onSubmit(formValue) {
-this.isSubmitted = true;
-if (this.formTemplate.valid) {
-  var filePath = `images/${this.selectedImage.name}_${new Date().getTime()}`;
-  const fileRef = this.storage.ref(filePath);
-  this.storage.upload(filePath, this.selectedImage).snapshotChanges().pipe(
-    finalize(() => {
-      fileRef.getDownloadURL().subscribe((url) => {
-        formValue['imageURL'] = url;
-        this.firebaseService.newCazare(formValue);
-        this.resetForm();
-        this.isModalActive=false;
+  this.isSubmitted = true;
+  if (this.formTemplate.valid) {
+    let data = Object.assign({}, formValue);
+    delete data.id;
+
+    if(!this.isUpdate){
+    var filePath = `images/${this.selectedImage.name}_${new Date().getTime()}`;
+    const fileRef = this.storage.ref(filePath);
+    this.storage.upload(filePath, this.selectedImage).snapshotChanges().pipe(
+      finalize(() => {
+        fileRef.getDownloadURL().subscribe((url) => {
+          formValue['imageURL'] = url;
+          this.firestore.collection('cazari').add(formValue);
+        })
       })
-    })
-  ).subscribe();
+    ).subscribe();
+  }
+  else{
+    // this.firestore.doc('cazari/'+ this.editId).update(data);
+    var filePath = `images/${this.selectedImage.name}_${new Date().getTime()}`;
+    const fileRef = this.storage.ref(filePath);
+    this.storage.upload(filePath, this.selectedImage).snapshotChanges().pipe(
+      finalize(() => {
+        fileRef.getDownloadURL().subscribe((url) => {
+          data['imageURL'] = url;
+          this.firestore.doc('cazari/'+ this.editId).update(data);
+        })
+      })
+    ).subscribe();
+
+      this.isUpdate = false;
+  }
 }
-}
+
+
+this.resetForm();
+this.isModalActive=false;
+  
+  }
 
 resetForm() {
 this.formTemplate.reset();
@@ -95,6 +158,7 @@ this.formTemplate.setValue({
   name: '',
   description: '',
   category: 'Semenic',
+  link:'',
   imageURL: ''
 });
 this.imgSrc = null;
@@ -129,5 +193,45 @@ ratingPress(){
     this.router.navigate(["/login-email"]);  
 }
 
+buttonSemenic(){
+
+  this.service.getCazariSemenic().subscribe(data => {
+    this.cazari = data.map(e => {
+      return {
+        id: e.payload.doc.id,
+        ...<any>e.payload.doc.data()
+      } as Cazare;
+    })
+    
+  });
+
+}
+
+buttonValiug(){
+
+  this.service.getCazariValiug().subscribe(data => {
+    this.cazari = data.map(e => {
+      return {
+        id: e.payload.doc.id,
+        ...<any>e.payload.doc.data()
+      } as Cazare;
+    })
+    
+  });
+
+}
+
+buttontoate(){
+
+  this.service.getCazari().subscribe(data => {
+    this.cazari = data.map(e => {
+      return {
+        id: e.payload.doc.id,
+        ...<any>e.payload.doc.data()
+      } as Cazare;
+    })
+    
+  });
+}
 
 }

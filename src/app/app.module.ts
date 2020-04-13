@@ -35,7 +35,8 @@ import { StarReviewComponent } from './star-review/star-review.component';
 import { CommentComponent } from './comment/comment.component';
 import { PartiiComponent } from './partii/partii.component';
 import { PartiiListComponent } from './partii-list/partii-list.component';
-import { SkipassComponent } from './skipass/skipass.component'
+import { SkipassComponent } from './skipass/skipass.component';
+import { RatingComponent } from './rating/rating.component'
  
 
 export const firebaseConfig = {
@@ -66,7 +67,8 @@ export const firebaseConfig = {
     CommentComponent,
     PartiiComponent,
     PartiiListComponent,
-    SkipassComponent
+    SkipassComponent,
+    RatingComponent
   ],
   imports: [
     BrowserModule,

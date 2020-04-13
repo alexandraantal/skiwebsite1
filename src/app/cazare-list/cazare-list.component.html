@@ -3,13 +3,21 @@
 </div>
 
 <section class="section ">
+  
     <div class="container" >
+      <span style="font-size: medium;">Locatie: &nbsp;</span>
+      <button class="button is-primary is-outlined" (click)="buttonSemenic()">Semenic</button>&nbsp;
+      <button class="button is-primary is-outlined" (click)="buttonValiug()">Valiug </button>&nbsp;
+      <button class="button is-primary is-outlined" (click)="buttontoate()">Toate</button>
+
+
         <a  *ngIf="userStatus && (userStatus.role === 'admin')">
             <button class="button is-primary"  
-            style=" margin:auto;display:block;" 
+            style="float: right;" 
             (click)="buttonPress()">Adauga cazare</button>
           </a>
-
+    </div>
+  <div class="container" >
           <div class="modal" [ngClass]="{ 'is-active' : isModalActive }">
             <div class="modal-background" (click)="toggleModal()"></div>
             <div class="modal-card">
@@ -49,6 +57,22 @@
                           </div>
                     </div>
                       </div>
+                </div>
+
+                <div class="field-body">
+                  <div class="field">
+              <div class="formGroup">
+                  <label class="label is-medium has-background-white">URL</label>
+                    <div class="control">
+                  <input 
+                  class="input is-primary" 
+                  type="text"
+                  formControlName="link" 
+                  placeholder="Site-ul cazarii" 
+                  required>
+                </div>
+                </div>
+                  </div>
                 </div>
                     
                 <div class="field">
@@ -120,9 +144,10 @@
                  <div class="card is-slightly-rounded">
 
 <div class="card-image">
+  
             <figure class="image">
          <img src={{cazare.imageURL}} class="is-slightly-rounded" />
-        
+
     </figure>
 </div>
 <div class="card-content">
@@ -131,17 +156,34 @@
             <span class="title is-4 is-capitalized">
                 <a class="has-text-black" href="#">{{cazare.name}}</a>
             </span>
+
             <br>
             <span class="m-t-tiny block">{{cazare.category}}</span>
+            <a *ngIf="userStatus && (userStatus.role === 'admin')">
+              <span class="icon is-medium is-right fas fa-lg" style="float: right; color:#0B8C68;">
+                <fa-icon [icon]="faTrash" (click)="delete(cazare.id)"></fa-icon>
+              </span> 
+            </a>
+            &nbsp;
+            <a *ngIf="userStatus && (userStatus.role === 'admin')">
+              <span class="icon is-medium is-right fas fa-lg" style="float: right; color:#0B8C68;">
+                <fa-icon [icon]="faEdit" (click)="onEdit(cazare,cazare.id)"></fa-icon>
+              </span> 
+            </a>
         </p>
 
         <p > {{cazare.description}}      </p>
 
-        
-        <app-star-review *ngIf="userStatus" cazareId={{cazare.id}} userId={{userStatus.id}}></app-star-review>
+        <div class="container" style="width: 65%; float: left;">
+          <!-- <app-star-review *ngIf="userStatus" cazareId={{cazare.id}} userId={{userStatus.id}}></app-star-review> -->
+          <app-star-review cazareId={{cazare.id}}></app-star-review>
+          <a *ngIf="!userStatus" class="button is-primary is-outlined is-small " (click)="ratingPress()">Adauga nota</a>
+        </div>
+       
+      <div class="container" style="width: 33%; float: right;">
+        <a href="{{cazare.link}}" target="_blank" class="button is-danger">Detalii</a>
 
-      <a *ngIf="!userStatus" class="button is-primary is-block is-alt is-small" (click)="ratingPress()">Vezi nota</a>
-
+      </div>
 
      </div>
 </div>

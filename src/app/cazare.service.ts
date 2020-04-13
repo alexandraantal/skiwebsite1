@@ -14,6 +14,14 @@ export class CazareService {
     return this.firestore.collection('cazari').snapshotChanges();
 }
 
+getCazariSemenic(){
+  return this.firestore.collection('cazari',ref => ref.where('category', '==', "Semenic")).snapshotChanges();
+}
+
+getCazariValiug(){
+  return this.firestore.collection('cazari',ref => ref.where('category', '==', "Valiug")).snapshotChanges();
+}
+
 deleteCazare(cazareId: string){
   this.firestore.doc('cazari/' + cazareId).delete();
 }
