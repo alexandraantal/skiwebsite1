@@ -14,7 +14,7 @@ export class CommentComponent implements OnInit {
   @Input() userId;
   @Input() postId;
 
-  comments: Comment[];
+  // comments: Comment[];
   message: string;
 
   constructor(private firebaseService: FirebaseService, private commentService: CommentService) { }
@@ -25,14 +25,14 @@ export class CommentComponent implements OnInit {
 
     // this.comments = this.commentService.getPostComments(this.postId);
 
-    this.commentService.getPostComments(this.postId).subscribe(data => {
-      this.comments = data.map(e => {
-        return {
-          id: e.payload.doc.id,
-          ...<any>e.payload.doc.data()
-        } as Comment;
-      })
-    });
+    // this.commentService.getPostComments(this.postId).subscribe(data => {
+    //   this.comments = data.map(e => {
+    //     return {
+    //       id: e.payload.doc.id,
+    //       ...<any>e.payload.doc.data()
+    //     } as Comment;
+    //   })
+    // });
 
 
   }
@@ -48,10 +48,10 @@ export class CommentComponent implements OnInit {
   
   }
   
-  showVar: boolean = false;
+  // showVar: boolean = false;
   
-  toggleComments(){
-      this.showVar = !this.showVar;
-  }
+  // toggleComments(){
+  //     this.showVar = !this.showVar;
+  // }
     
 }

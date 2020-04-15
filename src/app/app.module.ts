@@ -36,7 +36,8 @@ import { CommentComponent } from './comment/comment.component';
 import { PartiiComponent } from './partii/partii.component';
 import { PartiiListComponent } from './partii-list/partii-list.component';
 import { SkipassComponent } from './skipass/skipass.component';
-import { RatingComponent } from './rating/rating.component'
+import { RatingComponent } from './rating/rating.component';
+import { CommentListComponent } from './comment-list/comment-list.component'
 
 
  
@@ -70,7 +71,8 @@ export const firebaseConfig = {
     PartiiComponent,
     PartiiListComponent,
     SkipassComponent,
-    RatingComponent
+    RatingComponent,
+    CommentListComponent
   ],
   imports: [
     BrowserModule,
