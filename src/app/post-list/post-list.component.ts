@@ -1,3 +1,4 @@
+import { PaginationService } from './../pagination.service';
 import { PostService } from './../post.service';
 import { Post } from './../post.model';
 import { FirebaseService } from './../firebase.service';
@@ -20,18 +21,23 @@ export class PostListComponent implements OnInit {
   faTrash = faTrash;
   comment: string;
 
-  posts: Post[];
+  posts: Post[] = [];
+
+  pageOfItems: Array<any>;
   
 
 
-  constructor(private firebaseService: FirebaseService, private afs: AngularFirestore, private postService: PostService) { 
-
-    // this.postsCollectionRef = this.afs.collection<Post>('posts', ref => ref.orderBy('created', 'desc'));
-    // this.posts$ = this.postsCollectionRef.valueChanges();
-
-    //console.log(this.posts$)
-
+  constructor(private firebaseService: FirebaseService, private afs: AngularFirestore, private postService: PostService, private paginationService: PaginationService) { 
   }
+
+  // Array of all items
+private allItems: any = [];
+
+// Pagination object
+pagination: any = {};
+
+// Paged items
+pagedItems: any[];
 
   userStatus = this.firebaseService.userStatus;
 
@@ -43,10 +49,18 @@ export class PostListComponent implements OnInit {
           id: e.payload.doc.id,
           ...<any>e.payload.doc.data()
         } as Post;
+        
       })
+     // console.log(this.posts)
+
+     this.allItems = this.posts;   // Load data into allItems
+    this.setPage(1); 
+    
     });
 
   }
+
+  
 
   create(post: Post){
     this.postService.createPost(post);
@@ -56,6 +70,17 @@ export class PostListComponent implements OnInit {
   this.postService.deletePost(id);
 } 
 
+
+setPage(page: number) {
+  if (page < 1 || page > this.pagination.totalPages) {
+    return;
+  }
+  // Get pagination object from service
+  this.pagination = this.paginationService.getPagination(this.posts.length, page);
+
+  // Get current page of items
+  this.pagedItems = this.posts.slice(this.pagination.startIndex, this.pagination.endIndex + 1);
+}
 
 
 }

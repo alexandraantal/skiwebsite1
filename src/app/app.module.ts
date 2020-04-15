@@ -37,6 +37,8 @@ import { PartiiComponent } from './partii/partii.component';
 import { PartiiListComponent } from './partii-list/partii-list.component';
 import { SkipassComponent } from './skipass/skipass.component';
 import { RatingComponent } from './rating/rating.component'
+
+
  
 
 export const firebaseConfig = {
