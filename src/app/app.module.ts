@@ -37,10 +37,12 @@ import { PartiiComponent } from './partii/partii.component';
 import { PartiiListComponent } from './partii-list/partii-list.component';
 import { SkipassComponent } from './skipass/skipass.component';
 import { RatingComponent } from './rating/rating.component';
-import { CommentListComponent } from './comment-list/comment-list.component'
+import { CommentListComponent } from './comment-list/comment-list.component';
+import { VremeaComponent } from './vremea/vremea.component';
 
 
- 
+
+//import { CommonModule } from '@angular/common'; 
 
 export const firebaseConfig = {
   apiKey: "AIzaSyCgHU0VysKuDjqdsCdY0VDQpDkzg77b8F8",
@@ -72,7 +74,8 @@ export const firebaseConfig = {
     PartiiListComponent,
     SkipassComponent,
     RatingComponent,
-    CommentListComponent
+    CommentListComponent,
+    VremeaComponent
   ],
   imports: [
     BrowserModule,

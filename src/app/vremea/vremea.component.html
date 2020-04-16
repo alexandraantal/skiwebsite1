@@ -1,0 +1,41 @@
+<section class="hero is-warning ">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">
+          Vremea
+        </h1>
+        
+      </div>
+    </div>
+  </section>
+
+  <section class="container" >
+        <div class="columns">
+            <div class="column is-2">
+                <section class="section">
+
+                    <a class="button is-primary  is-large" (click)="buttonSemenic()">Semenic</a>
+
+                    <a class="button is-primary  is-large" (click)="buttonValiug()">Valiug</a>
+
+                </section>
+            </div>
+            <div class="column is-10 ">
+                <section class="section">
+                
+                    <div  *ngIf="valiug" class="card" >
+                        <div class="card-content">
+                            <iframe src="https://www.meteoblue.com/ro/vreme/widget/three/v%c4%83liug_rom%c3%a2nia_663237?geoloc=fixed&nocurrent=0&noforecast=0&days=7&tempunit=CELSIUS&windunit=KILOMETER_PER_HOUR&layout=bright"  frameborder="0" scrolling="NO" allowtransparency="true" sandbox="allow-same-origin allow-scripts allow-popups allow-popups-to-escape-sandbox" style="width: 805px; height: 620px"></iframe><div><!-- DO NOT REMOVE THIS LINK --><a href="https://www.meteoblue.com/ro/vreme/s%C4%83pt%C4%83m%C3%A2na/v%c4%83liug_rom%c3%a2nia_663237?utm_source=weather_widget&utm_medium=linkus&utm_content=three&utm_campaign=Weather%2BWidget" target="_blank">meteoblue</a></div>                            
+                        </div>
+                    </div>
+
+
+                    <div *ngIf="semenic" class="card" >
+                        <div class="card-content">
+                            <iframe src="https://www.meteoblue.com/ro/vreme/widget/three/semenic_rom%c3%a2nia_8659196?geoloc=fixed&nocurrent=0&noforecast=0&days=7&tempunit=CELSIUS&windunit=KILOMETER_PER_HOUR&layout=bright"  frameborder="0" scrolling="NO" allowtransparency="true" sandbox="allow-same-origin allow-scripts allow-popups allow-popups-to-escape-sandbox" style="width: 805px; height: 620px"></iframe><div><!-- DO NOT REMOVE THIS LINK --><a href="https://www.meteoblue.com/ro/vreme/s%C4%83pt%C4%83m%C3%A2na/semenic_rom%c3%a2nia_8659196?utm_source=weather_widget&utm_medium=linkus&utm_content=three&utm_campaign=Weather%2BWidget" target="_blank">meteoblue</a></div>
+                        </div>
+                    </div>
+                </section> 
+    </div>
+    </div>
+  </section>
