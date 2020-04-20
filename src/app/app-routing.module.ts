@@ -1,3 +1,4 @@
+import { WebcamComponent } from './webcam/webcam.component';
 import { VremeaComponent } from './vremea/vremea.component';
 import { SkipassComponent } from './skipass/skipass.component';
 import { PartiiComponent } from './partii/partii.component';
@@ -28,7 +29,8 @@ const routes: Routes = [
   { path: 'cazare', component: CazareComponent },
   { path: 'partii', component: PartiiComponent },
   { path: 'skipass', component: SkipassComponent},
-  { path: 'vreme', component: VremeaComponent}
+  { path: 'vreme', component: VremeaComponent},
+  { path: 'webcam', component: WebcamComponent}
 ];
 
 @NgModule({

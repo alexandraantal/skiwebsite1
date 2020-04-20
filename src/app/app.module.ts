@@ -39,6 +39,7 @@ import { SkipassComponent } from './skipass/skipass.component';
 import { RatingComponent } from './rating/rating.component';
 import { CommentListComponent } from './comment-list/comment-list.component';
 import { VremeaComponent } from './vremea/vremea.component';
+import { WebcamComponent } from './webcam/webcam.component';
 
 
 
@@ -75,7 +76,8 @@ export const firebaseConfig = {
     SkipassComponent,
     RatingComponent,
     CommentListComponent,
-    VremeaComponent
+    VremeaComponent,
+    WebcamComponent
   ],
   imports: [
     BrowserModule,
