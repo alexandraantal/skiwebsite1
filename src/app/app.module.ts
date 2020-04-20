@@ -40,6 +40,7 @@ import { RatingComponent } from './rating/rating.component';
 import { CommentListComponent } from './comment-list/comment-list.component';
 import { VremeaComponent } from './vremea/vremea.component';
 import { WebcamComponent } from './webcam/webcam.component';
+import { ServiciiComponent } from './servicii/servicii.component';
 
 
 
@@ -77,7 +78,8 @@ export const firebaseConfig = {
     RatingComponent,
     CommentListComponent,
     VremeaComponent,
-    WebcamComponent
+    WebcamComponent,
+    ServiciiComponent
   ],
   imports: [
     BrowserModule,
