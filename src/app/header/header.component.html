@@ -3,7 +3,6 @@
     <!-- logo -->
     <div class="navbar-brand">
       <a class="navbar-item">
-        <!-- <img src="assets/image/logo.png"> -->
         <span class="icon is-large is-left">
           <i class="fas fa-2x" style="color:#0B8C68;">
           <fa-icon [icon]="faMountain"></fa-icon>
@@ -31,26 +30,9 @@
       <a class="navbar-item" routerLink="/servicii">Servicii</a>
       <a class="navbar-item" routerLink="/cazare">Cazare</a>
       <a class="navbar-item" routerLink="/forum">Noutati</a>
-      <!-- <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
-          HoReCa
-        </a>
-
-        <div class="navbar-dropdown">
-          <a class="navbar-item" routerLink="/cazare">
-            Cazare
-          </a>
-          
-          <a class="navbar-item">
-            Restaurante si Cafenele
-          </a>
-        </div> -->
-
-      <!-- </div> -->
+    
     </div>
 
-
-  <!-- <div *ngIf="!isLoggedIn"> -->
   <div class="navbar-end" *ngIf="!userStatus">
     <div class="navbar-item">
       <div class="buttons">
@@ -65,12 +47,24 @@
   </div>
 
 
-<!-- <div *ngIf="isLoggedIn"> -->
   <div class="navbar-end" *ngIf="userStatus">
     <div class="navbar-item">
       <div class="buttons">
         <a  *ngIf="userStatus.role === 'admin'" class="button is-light" routerLink="admin">
-          Admin  
+          <span class="icon">
+            <i class="fas" >
+            <fa-icon [icon]="faUser"></fa-icon>
+          </i>
+          </span>
+         <span>Admin</span> 
+        </a>
+        <a  *ngIf="userStatus.role !== 'admin'" class="button is-light" routerLink="profile">
+          <span class="icon">
+            <i class="fas" >
+            <fa-icon [icon]="faUser"></fa-icon>
+          </i>
+          </span>
+         <span>{{userStatus.name}}</span> 
         </a>
       <a class="button is-danger" (click)="logout()">
         Logout

@@ -19,9 +19,7 @@ import { Observable, BehaviorSubject } from 'rxjs';
 @Component({
   selector: 'app-email',
   templateUrl: './email.component.html',
-  styleUrls: ['./email.component.scss'],
-  //  animations: [moveIn(), fallIn()],
-  //  host: {'[@moveIn]': ''}
+  styleUrls: ['./email.component.scss']
 })
 export class EmailComponent implements OnInit {
 
@@ -67,7 +65,7 @@ onSubmit(formData) {
 loginGoogle() {
   this.af.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then(
       (success) => {
-      this.router.navigate(['/members']);
+      this.router.navigate(['/profile']);
     }).catch(
       (err) => {
       this.error = err;

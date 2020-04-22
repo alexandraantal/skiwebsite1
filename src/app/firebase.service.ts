@@ -48,7 +48,7 @@ export class FirebaseService {
           console.log(x.data());
           this.currentUser = x.data();
           this.setUserStatus(this.currentUser);
-          this.router.navigate(["/members"]);
+          this.router.navigate(["/profile"]);
         })
        }).catch(err => {
          console.log(err);
@@ -73,10 +73,10 @@ export class FirebaseService {
             //setUserStatus
             this.setUserStatus(this.currentUser)
 
-            //console.log(this.currentUser.name);
+            // console.log(this.currentUser.name);
 
             if(userRef.data().role !== "admin") {
-              this.router.navigate(["/members"]);
+              this.router.navigate(["/profile"]);
             }else{
               this.router.navigate(["/admin"]);
             }
@@ -111,16 +111,18 @@ export class FirebaseService {
             //setUserStatus
             this.setUserStatus(this.currentUser);
             console.log(this.userStatus)
+
+           
             
               if(userRef.data().role !== "admin") {
-               this.ngZone.run(() => this.router.navigate(["/members"]));
+               this.ngZone.run(() => this.router.navigate(["/profile"]));
               }else{
                this.ngZone.run(() => this.router.navigate(["/admin"])); 
               }
           })
         })
       }else{
-        // this.ngZone.run(() => this.router.navigate(["/"]));
+         this.ngZone.run(() => this.router.navigate(["/"]));
       }
     })
   }

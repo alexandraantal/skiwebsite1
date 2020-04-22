@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Component, OnInit } from '@angular/core';
 
-import { faMountain } from '@fortawesome/free-solid-svg-icons';
+import { faMountain, faUser } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-header',
@@ -13,6 +13,7 @@ import { faMountain } from '@fortawesome/free-solid-svg-icons';
 export class HeaderComponent implements OnInit {
 
   faMountain = faMountain;
+  faUser = faUser;
 
 //   public isLoggedIn: Boolean;
   
@@ -51,7 +52,6 @@ ngOnInit(){
   this.firebaseService.userStatusChanges.subscribe(x => this.userStatus = x);
   console.log(this.userStatus)
 
-  
 }
 
 }

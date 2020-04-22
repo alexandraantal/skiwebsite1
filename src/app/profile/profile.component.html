@@ -1,0 +1,73 @@
+<!-- <section class="hero is-primary is-bold">
+    <div class="hero-body">
+    <div class="container">
+  
+      <h1 class="title">Contul meu </h1>
+  
+    </div>
+    </div>
+  </section> -->
+
+<section class="section is-fullwidth " style="background-color:#0B8C68;">
+<div class="container">
+     
+      <h1 class="title" style="color: white">
+      
+        Contul meu </h1>
+  
+</div>
+</section>
+
+<section class="section is-fullwidth" style="background-color:#e5f1ef; padding-left: 4rem;">
+    <div class="columns ">
+      <div class="column is-5-mobile is-3-tablet is-3-desktop">
+
+
+ 
+        <section class="container" style="background-color:white; padding: 1rem 1rem 1rem 1rem; font-size:small; border-radius: 10px; height: 20rem;">
+           <div style="text-align: center;">
+            <span class="icon is-large">
+                <i class="fas fa-2x " style="color:rgb(77, 75, 75);display: block;">
+                <fa-icon [icon]="faUser"></fa-icon>
+              </i>
+              </span>
+            </div>
+            <br>
+            <aside class="vertical-menu" >
+                <p class="menu-label">
+                  Administrare
+                </p>
+                <ul class="menu-list">
+                  <li><a>Editeaza profilul</a></li>
+                  <li><a>Postarile Mele</a></li>
+                </ul>
+                <p class="menu-label">
+                  Deconecteaza-te
+                </p>
+                <ul class="menu-list">
+                  <li><a (click)="logout()">Logout</a></li>
+                </ul>
+              </aside>
+              
+</section>
+    </div>
+
+    <div class="column is-7-mobile is-9-tablet is-9-desktop">
+        <section class="container" style="background-image: url('../../assets/image/profile.gif'); background-size: 100% auto; padding: 1rem 1rem 1rem 1rem; font-size:small; border-radius: 10px; height: 20rem;">
+           
+           <div class="container" style="display: block; padding: 70px 0; padding-left: 70px;" >
+            
+            <h1 class="title " style="font-size: 3em;">
+                &nbsp;&nbsp;Buna, {{userStatus.name}} ! 
+            </h1>
+            <h2 class="subtitle">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Email: {{userStatus.username}}
+            </h2>
+
+          </div>
+        
+        </section>
+    </div>
+    
+</div>
+</section>

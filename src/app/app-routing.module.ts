@@ -1,3 +1,4 @@
+import { ProfileComponent } from './profile/profile.component';
 import { ServiciiComponent } from './servicii/servicii.component';
 import { WebcamComponent } from './webcam/webcam.component';
 import { VremeaComponent } from './vremea/vremea.component';
@@ -32,7 +33,8 @@ const routes: Routes = [
   { path: 'skipass', component: SkipassComponent},
   { path: 'vreme', component: VremeaComponent},
   { path: 'webcam', component: WebcamComponent},
-  { path: "servicii", component: ServiciiComponent}
+  { path: "servicii", component: ServiciiComponent},
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({

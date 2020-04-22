@@ -17,7 +17,6 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { EmailComponent } from './email/email.component';
-import { MembersComponent } from './members/members.component';
 import { SignupComponent } from './signup/signup.component';
 
 import { AuthGuard } from './auth.service';
@@ -41,6 +40,7 @@ import { CommentListComponent } from './comment-list/comment-list.component';
 import { VremeaComponent } from './vremea/vremea.component';
 import { WebcamComponent } from './webcam/webcam.component';
 import { ServiciiComponent } from './servicii/servicii.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 
@@ -63,7 +63,6 @@ export const firebaseConfig = {
     HomeComponent,
     ContactComponent,
     EmailComponent,
-    MembersComponent,
     SignupComponent,
     AdminComponent,
     ForumComponent,
@@ -79,7 +78,8 @@ export const firebaseConfig = {
     CommentListComponent,
     VremeaComponent,
     WebcamComponent,
-    ServiciiComponent
+    ServiciiComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
