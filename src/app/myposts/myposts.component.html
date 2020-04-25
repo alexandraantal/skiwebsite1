@@ -1,0 +1,60 @@
+  
+    <div class="box content has-text-centered" *ngIf="(posts)?.length==0" >
+        <p><strong> Nu exista postari!</strong></p>
+      </div>
+      <div *ngFor="let post of pagedItems" [class.completed]="post.completed">
+      <div class="card" style="border-radius: 10px;">
+        <header class="card-header">
+           
+          <p class="card-header-title" style="font-size: 27px">{{ post.title }} </p> &nbsp;&nbsp;
+            
+          <a  *ngIf="userStatus && (userStatus.role === 'admin')">
+            <span class="icon is-large is-right fas fa-lg">
+              <fa-icon [icon]="faTrash" (click)="delete(post.id)"></fa-icon>
+            </span> 
+          </a>
+        </header>
+        <div class="card-content">
+          <div class="content">
+            <p>
+            {{ post.message }}
+          </p>
+          <p ><span style="float: left;">{{ post.user }} &nbsp;&nbsp; </span> 
+            <span style="float: right;"> <i><small>{{post.created.toDate() | date: 'dd MMM hh:mm'}}</small></i></span>
+            </p>
+           </div>
+        </div>
+      
+      <app-comment *ngIf="userStatus" postId={{post.id}} userId={{userStatus.name}}></app-comment>
+      <app-comment-list postId={{post.id}}></app-comment-list>
+       
+      </div>
+      </div>
+      
+       <!-- Pagination -->
+       <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+              
+        <!-- Logic for First, Previous, Next, and Last Links -->
+        <a class="pagination-previous" (click)="setPage(1)" [class.disabled]="pagination.currentPage === 1">
+          First
+        </a>
+        <a class="pagination-previous" (click)="setPage(pagination.currentPage - 1)" [class.disabled]="pagination.currentPage === 1">
+          Previous
+        </a>
+        <!-- List of pages -->
+        <ul *ngIf="pagination.pages && pagination.pages.length" class="pagination-list">
+          <li *ngFor="let page of pagination.pages">
+            <a class="pagination-link" [class.is-current]="pagination.currentPage === page" aria-label="Goto page 1" (click)="setPage(page)">{{ page }}</a>
+          </li>
+        </ul>
+        <a class="pagination-next" (click)="setPage(pagination.currentPage + 1)" [class.disabled]="pagination.currentPage === pagination.totalPages">
+          Next
+        </a>
+        <a class="pagination-next" (click)="setPage(pagination.totalPages)" [class.disabled]="pagination.currentPage === pagination.totalPages">
+          Last
+        </a>
+        
+        
+      
+      </nav>
+ 

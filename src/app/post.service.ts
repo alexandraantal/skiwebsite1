@@ -13,6 +13,13 @@ export class PostService {
     return this.firestore.collection<Post>('posts', ref => ref.orderBy('created', 'desc')).snapshotChanges();
 }
 
+getUserPosts(user : string) {
+  
+  let userposts = this.firestore.collection<Post>('posts', ref => ref.where('user', '==', user)).snapshotChanges();
+
+  return userposts;
+}
+
 deletePost(postId: string){
   this.firestore.doc('posts/' + postId).delete();
 }
