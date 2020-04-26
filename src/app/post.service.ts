@@ -13,9 +13,9 @@ export class PostService {
     return this.firestore.collection<Post>('posts', ref => ref.orderBy('created', 'desc')).snapshotChanges();
 }
 
-getUserPosts(user : string) {
+getUserPosts(userId : string) {
   
-  let userposts = this.firestore.collection<Post>('posts', ref => ref.where('user', '==', user)).snapshotChanges();
+  let userposts = this.firestore.collection<Post>('posts', ref => ref.where('userId', '==', userId).orderBy('created', 'desc')).snapshotChanges();
 
   return userposts;
 }

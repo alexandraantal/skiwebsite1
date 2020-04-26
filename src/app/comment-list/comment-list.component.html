@@ -4,7 +4,7 @@
   <div *ngIf="showVar">
   <div class="card-footer" *ngFor="let comment of comments" [class.completed]="comment.completed">
           <div class="card-footer-item" style="justify-content: flex-start;">
-            &nbsp; <strong>{{comment.userId}} :</strong> &nbsp;&nbsp;  {{comment.message}}
+            &nbsp; <strong>{{comment.userName}} :</strong> &nbsp;&nbsp;  {{comment.message}}
           </div>
       </div>
   </div>

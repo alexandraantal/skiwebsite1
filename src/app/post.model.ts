@@ -4,6 +4,6 @@ export class Post {
     message: string;
     title: string;
     user: string;
+    userId: string;
     created: Timestamp<any>;
-    // comments?:  Comm[]
 }

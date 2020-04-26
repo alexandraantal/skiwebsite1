@@ -26,9 +26,9 @@ export class CommentService {
     
   }
 
-  setComment(userId, postId, message) {
+  setComment(userId, userName, postId, message) {
   
-    let comment= { userId: userId, postId: postId, message: message };
+    let comment= { userId: userId, userName: userName, postId: postId, message: message };
 
     // const commentPath = `comments/${comment.userId}_${comment.postId}`;
 

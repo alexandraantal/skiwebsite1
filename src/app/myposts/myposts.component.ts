@@ -39,7 +39,7 @@ userStatus = this.firebaseService.userStatus;
 
 ngOnInit(){
 
-  this.postService.getUserPosts(this.userStatus.name).subscribe(data => {
+  this.postService.getUserPosts(this.userStatus.id).subscribe(data => {
     this.posts = data.map(e => {
       return {
         id: e.payload.doc.id,

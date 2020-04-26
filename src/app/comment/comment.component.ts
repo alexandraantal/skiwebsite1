@@ -12,6 +12,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class CommentComponent implements OnInit {
 
   @Input() userId;
+  @Input() userName;
   @Input() postId;
 
   // comments: Comment[];
@@ -40,7 +41,7 @@ export class CommentComponent implements OnInit {
   onSubmit(formData){
     if(formData.valid) {
 
-      this.commentService.setComment(this.userId, this.postId, formData.value.message)
+      this.commentService.setComment(this.userId, this.userName, this.postId, formData.value.message)
 
       var resetForm=<HTMLFormElement>document.getElementById("CommentForm");
       resetForm.reset();
