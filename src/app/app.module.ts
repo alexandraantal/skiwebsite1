@@ -42,6 +42,7 @@ import { WebcamComponent } from './webcam/webcam.component';
 import { ServiciiComponent } from './servicii/servicii.component';
 import { ProfileComponent } from './profile/profile.component';
 import { MypostsComponent } from './myposts/myposts.component';
+import { EditprofileComponent } from './editprofile/editprofile.component';
 
 
 
@@ -81,7 +82,8 @@ export const firebaseConfig = {
     WebcamComponent,
     ServiciiComponent,
     ProfileComponent,
-    MypostsComponent
+    MypostsComponent,
+    EditprofileComponent
   ],
   imports: [
     BrowserModule,

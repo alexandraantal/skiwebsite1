@@ -75,11 +75,13 @@ export class FirebaseService {
 
             // console.log(this.currentUser.name);
 
-            if(userRef.data().role !== "admin") {
-              this.router.navigate(["/profile"]);
-            }else{
-              this.router.navigate(["/admin"]);
-            }
+            // if(userRef.data().role !== "admin") {
+            //   this.router.navigate(["/profile"]);
+            // }else{
+            //   this.router.navigate(["/admin"]);
+            // }
+
+            this.router.navigate(["/profile"]);
           })
         })
        
@@ -114,11 +116,13 @@ export class FirebaseService {
 
            
             
-              if(userRef.data().role !== "admin") {
-               this.ngZone.run(() => this.router.navigate(["/profile"]));
-              }else{
-               this.ngZone.run(() => this.router.navigate(["/admin"])); 
-              }
+              // if(userRef.data().role !== "admin") {
+              //  this.ngZone.run(() => this.router.navigate(["/profile"]));
+              // }else{
+              //  this.ngZone.run(() => this.router.navigate(["/admin"])); 
+              // }
+
+              this.ngZone.run(() => this.router.navigate(["/profile"]));
           })
         })
       }else{

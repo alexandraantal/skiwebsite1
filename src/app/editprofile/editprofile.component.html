@@ -1,0 +1,16 @@
+<form [formGroup]="formTemplate" (submit)="onSubmit(formTemplate.value)">
+  
+    <div class="formGroup" >
+          <div class="control">
+        <input 
+        class="input is-primary" 
+        type="text"
+        formControlName="name" 
+        required>
+          </div>
+      </div>
+
+      <button type="submit" class="button is-primary" [disabled]="formTemplate.invalid" >
+      Salveaza Modificarile
+    </button>
+</form>
