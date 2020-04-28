@@ -11,6 +11,23 @@
       </div>
 
       <button type="submit" class="button is-primary" [disabled]="formTemplate.invalid" >
-      Salveaza Modificarile
+      Modifica numele
     </button>
 </form>
+
+<!-- <form [formGroup]="formTemplateEmail" (submit)="onSubmitEmail(formTemplate.value)">
+  
+  <div class="formGroup" >
+        <div class="control">
+      <input 
+      class="input is-primary" 
+      type="email"
+      formControlName="email" 
+      required>
+        </div>
+    </div>
+
+    <button type="submit" class="button is-primary" [disabled]="formTemplate.invalid" >
+    Modifica adresa email
+  </button>
+</form> -->

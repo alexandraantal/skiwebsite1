@@ -1,0 +1,21 @@
+
+<div class="container has-text-centered">
+    <table class="table is-striped " >
+        <thead>
+            <tr>
+             <th>Id</th>
+              <th>Nume</th>
+              <th>Rol</th>
+              <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users" [class.completed]="user.completed"> 
+                <td>{{user.id}}</td>
+                <td>{{user.name}}</td>
+                <td>{{user.role}}</td>
+                <td>{{user.username}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

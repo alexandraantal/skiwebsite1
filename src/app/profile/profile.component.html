@@ -14,7 +14,7 @@
 
 
  
-        <section class="container" style="background-color:white; padding: 1rem 1rem 1rem 1rem; font-size:small; border-radius: 10px; height: 20rem;">
+        <section class="container" style="background-color:white; padding: 1rem 1rem 1rem 1rem; font-size:small; border-radius: 10px; height: 22rem;">
            <div style="text-align: center;">
             <span class="icon is-large" (click)="startProfile()">
                 <i class="fas fa-2x " style="color:rgb(77, 75, 75);display: block;" >
@@ -30,6 +30,7 @@
                 <ul class="menu-list">
                   <li><a (click)="editProfile()">Editeaza profilul</a></li>
                   <li><a (click)="myPosts()">Postarile Mele</a></li>
+                  <li *ngIf="(userStatus.role === 'admin')"><a (click)="userList()">Lista Utilizatori</a></li>
                 </ul>
                 <p class="menu-label">
                   Deconecteaza-te
@@ -43,7 +44,7 @@
     </div>
 
     <div *ngIf="start" class="column is-7-mobile is-9-tablet is-9-desktop">
-        <section class="container" style="background-image: url('../../assets/image/profile.gif'); background-size: 100% auto; padding: 1rem 1rem 1rem 1rem; font-size:small; border-radius: 10px; height: 20rem;">
+        <section class="container" style="background-image: url('../../assets/image/profile.gif'); background-size: 100% auto; padding: 1rem 1rem 1rem 1rem; font-size:small; border-radius: 10px; height: 22rem;">
            
            <div class="container" style="display: block; padding: 70px 0; padding-left: 70px;" >
             
@@ -64,11 +65,19 @@
   </div>
 
   <div *ngIf="editeazaProfil" class="column is-7-mobile is-9-tablet is-9-desktop">
-    <section class="container" style="background: white; background-size: 100% auto; padding: 1rem 1rem 1rem 1rem; font-size:small; border-radius: 10px; height: 20rem;">
+    <section class="container" style="background: white; background-size: 100% auto; padding: 1rem 1rem 1rem 1rem; font-size:small; border-radius: 10px; height: 22rem;">
        
        <app-editprofile></app-editprofile>
     
     </section>
+</div>
+
+<div *ngIf="users && (userStatus.role === 'admin')" class="column is-7-mobile is-9-tablet is-9-desktop">
+  <section class="container" style="background: white; background-size: 100% auto; padding: 1rem 1rem 1rem 1rem; font-size:small; border-radius: 10px; height: 22rem;">
+       
+   <app-user-list></app-user-list> 
+ 
+ </section>
 </div>
     
 </div>

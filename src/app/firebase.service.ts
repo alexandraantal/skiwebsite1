@@ -34,7 +34,7 @@ export class FirebaseService {
      .then((userResponse)=>{
        // add the user to the "users" database
        let user = {
-        id: userResponse.user.uid,
+        authId: userResponse.user.uid,
         username: userResponse.user.email,
         name: name,
         role: "user",

@@ -17,6 +17,8 @@ export class ProfileComponent implements OnInit {
   postarileMele : boolean = false;
   editeazaProfil : boolean = false;
 
+  users : boolean = false;
+
   start : boolean = true;
 
   constructor(public af: AngularFireAuth, private router: Router, private firebaseService: FirebaseService) { }
@@ -42,6 +44,7 @@ export class ProfileComponent implements OnInit {
     this.start = false;
     this.editeazaProfil = false;
     this.postarileMele = true;
+    this.users = false;
   }
 
   startProfile(){
@@ -49,6 +52,7 @@ export class ProfileComponent implements OnInit {
 
     this.postarileMele = false;
     this.editeazaProfil = false;
+    this.users = false;
 
   }
 
@@ -57,6 +61,14 @@ export class ProfileComponent implements OnInit {
     this.start = false;
     this.editeazaProfil = true;
     this.postarileMele = false;
+    this.users = false;
+  }
+
+  userList(){
+    this.start = false;
+    this.editeazaProfil = false;
+    this.postarileMele = false;
+    this.users = true;
   }
 
 }

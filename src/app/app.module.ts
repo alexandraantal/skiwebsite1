@@ -43,6 +43,7 @@ import { ServiciiComponent } from './servicii/servicii.component';
 import { ProfileComponent } from './profile/profile.component';
 import { MypostsComponent } from './myposts/myposts.component';
 import { EditprofileComponent } from './editprofile/editprofile.component';
+import { UserListComponent } from './user-list/user-list.component';
 
 
 
@@ -83,7 +84,8 @@ export const firebaseConfig = {
     ServiciiComponent,
     ProfileComponent,
     MypostsComponent,
-    EditprofileComponent
+    EditprofileComponent,
+    UserListComponent
   ],
   imports: [
     BrowserModule,
