@@ -14,7 +14,7 @@
 
 
  
-        <section class="container" style="background-color:white; padding: 1rem 1rem 1rem 1rem; font-size:small; border-radius: 10px; height: 22rem;">
+        <section class="container" style="background-color:white; padding: 1rem 1rem 1rem 1rem; font-size:small; border-radius: 10px; height: 20rem;">
            <div style="text-align: center;">
             <span class="icon is-large" (click)="startProfile()">
                 <i class="fas fa-2x " style="color:rgb(77, 75, 75);display: block;" >
@@ -28,7 +28,7 @@
                   Administrare
                 </p>
                 <ul class="menu-list">
-                  <li><a (click)="editProfile()">Editeaza profilul</a></li>
+                  <!-- <li><a (click)="editProfile()">Editeaza profilul</a></li> -->
                   <li><a (click)="myPosts()">Postarile Mele</a></li>
                   <li *ngIf="(userStatus.role === 'admin')"><a (click)="userList()">Lista Utilizatori</a></li>
                 </ul>
@@ -44,9 +44,9 @@
     </div>
 
     <div *ngIf="start" class="column is-7-mobile is-9-tablet is-9-desktop">
-        <section class="container" style="background-image: url('../../assets/image/profile.gif'); background-size: 100% auto; padding: 1rem 1rem 1rem 1rem; font-size:small; border-radius: 10px; height: 22rem;">
+        <section class="container" style="background-image: url('../../assets/image/profile.gif'); background-size: 100% auto; padding: 1rem 1rem 1rem 1rem; font-size:small; border-radius: 10px; height: 20rem;">
            
-           <div class="container" style="display: block; padding: 70px 0; padding-left: 70px;" >
+           <div class="container" style="display: block; padding: 50px 0; padding-left: 70px;" >
             
             <h1 class="title " style="font-size: 3em;">
                 &nbsp;&nbsp;Buna, {{userStatus.name}} ! 
@@ -54,6 +54,49 @@
             <h2 class="subtitle">
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Email: {{userStatus.username}}
             </h2>
+            <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="button is-warning is-medium" (click)="toggleModal()">
+              <span class="icon">
+                <i class="fas " style="color:white;" >
+                <fa-icon [icon]="faEdit" ></fa-icon>
+              </i>
+              </span>
+             <span>Editeaza numele</span> </a>
+
+             <div class="modal" [ngClass]="{ 'is-active' : isModalActive }">
+              <div class="modal-background" (click)="toggleModal()"></div>
+              <div class="modal-card">
+                <header class="modal-card-head">
+                  <p class="modal-card-title">Editeaza numele</p>
+                  <button class="delete" aria-label="close" (click)="toggleModal()"></button>
+                </header>
+                <section class="modal-card-body">
+                
+      
+                  <form [formGroup]="formTemplate" (submit)="onSubmit(formTemplate.value)">
+  
+                    <div class="formGroup" >
+                      <div class="control">
+                    <input 
+                    class="input is-primary" 
+                    type="text"
+                    formControlName="name" 
+                    required>
+                      </div>
+                  </div>
+            
+                  <div class="buttons">
+                  <button type="submit" class="button is-primary" [disabled]="formTemplate.invalid" >
+                    Salveaza
+                  </button>
+                  <button class="button is-light" (click)="toggleModal()">Anuleaza</button>
+                    </div>
+                  </form>
+      
+                </section>
+              </div>
+            </div>
+      
 
           </div>
         
@@ -64,16 +107,16 @@
       <app-myposts></app-myposts>
   </div>
 
-  <div *ngIf="editeazaProfil" class="column is-7-mobile is-9-tablet is-9-desktop">
+  <!-- <div *ngIf="editeazaProfil" class="column is-7-mobile is-9-tablet is-9-desktop">
     <section class="container" style="background: white; background-size: 100% auto; padding: 1rem 1rem 1rem 1rem; font-size:small; border-radius: 10px; height: 22rem;">
        
        <app-editprofile></app-editprofile>
     
     </section>
-</div>
+</div> -->
 
-<div *ngIf="users && (userStatus.role === 'admin')" class="column is-7-mobile is-9-tablet is-9-desktop">
-  <section class="container" style="background: white; background-size: 100% auto; padding: 1rem 1rem 1rem 1rem; font-size:small; border-radius: 10px; height: 22rem;">
+<div *ngIf="userl && (userStatus.role === 'admin')" class="column is-7-mobile is-9-tablet is-9-desktop">
+  <section class="container" style="background: white; background-size: 100% auto; padding: 1rem 1rem 1rem 1rem; font-size:small; border-radius: 10px; height: 20rem;">
        
    <app-user-list></app-user-list> 
  
