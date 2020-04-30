@@ -1,28 +1,39 @@
-<nav class="navbar is-fixed-top">
+<nav class="navbar is-fixed-top" style="height: 4rem;">
 
     <!-- logo -->
-    <div class="navbar-brand">
+    <div class="navbar-brand" style="height: 4rem;">
       <a class="navbar-item">
-        <span class="icon is-large is-left">
+        <span class="icon  is-mediumis-left">
           <i class="fas fa-2x" style="color:#0B8C68;">
           <fa-icon [icon]="faMountain"></fa-icon>
         </i>
         </span>
       </a>
 
-      <a class="navbar-burger" aria-label="menu" aria-expanded="false"  >
+      <a (click)="toggleNavbar()" role="button" #navBurger class= "navbar-burger burger" aria-label="menu" aria-expanded="false"  >
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
       </a>
 
+      <!-- <a class="navbar-item " aria-label="menu" aria-expanded="false"  >
+        <span aria-hidden="true" class="icon is-large">
+          <i class="fas fa-2x" >
+          <fa-icon [icon]="faBars"></fa-icon>
+        </i>
+        </span>
+      </a>
+     -->
+
     </div>
 
+
+
+
     <!-- menu -->
-  <div class="navbar-menu">
+  <div class="navbar-menu"#navMenu>
     <div class="navbar-start">
       <a class="navbar-item" routerLink="">Acasa</a>
-      <!-- <a class="navbar-item" routerLink="contact">Contact</a> -->
       <a class="navbar-item" routerLink="/partii">Partii</a>
       <a class="navbar-item" routerLink="/skipass">Skipass</a>
       <a class="navbar-item" routerLink="/vreme">Vremea</a>
@@ -71,9 +82,10 @@
       </a>
     </div>
     </div>
-  </div>
+  </div>  
+  
+
 
 </div>
-
   </nav>
   

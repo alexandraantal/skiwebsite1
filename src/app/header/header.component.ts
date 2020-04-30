@@ -1,9 +1,9 @@
 import { FirebaseService } from './../firebase.service';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef  } from '@angular/core';
 
-import { faMountain, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faMountain, faUser, faBars } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-header',
@@ -14,28 +14,11 @@ export class HeaderComponent implements OnInit {
 
   faMountain = faMountain;
   faUser = faUser;
+  faBars = faBars;
 
-//   public isLoggedIn: Boolean;
-  
-//   constructor(public af: AngularFireAuth, private router: Router) { 
+  @ViewChild('navBurger') navBurger: ElementRef;
+  @ViewChild('navMenu') navMenu: ElementRef;
 
-//     this.af.authState.subscribe(auth => { 
-//       if(auth) {
-//         this.isLoggedIn = true;
-//       }
-//       else {
-//         this.isLoggedIn = false;
-//       }
-//     });
-//   }
-
-//   logout() {
-//     this.af.auth.signOut();
-//     this.router.navigateByUrl('');
-//  }
-
-//   ngOnInit(): void {
-//   }
 
 constructor(private firebaseService: FirebaseService){}
 
@@ -52,6 +35,11 @@ ngOnInit(){
   this.firebaseService.userStatusChanges.subscribe(x => this.userStatus = x);
   console.log(this.userStatus)
 
+}
+
+toggleNavbar() {
+  this.navBurger.nativeElement.classList.toggle('is-active');
+  this.navMenu.nativeElement.classList.toggle('is-active');
 }
 
 }
