@@ -12,6 +12,7 @@ export class ServiciiComponent implements OnInit {
   faSkiing = faSkiing;
   faTools = faTools;
   faMitten = faMitten;
+  
 
   constructor() { }
 

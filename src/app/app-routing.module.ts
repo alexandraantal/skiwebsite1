@@ -1,3 +1,4 @@
+import { ScolischiComponent } from './scolischi/scolischi.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ServiciiComponent } from './servicii/servicii.component';
 import { WebcamComponent } from './webcam/webcam.component';
@@ -25,7 +26,6 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'login-email', component: EmailComponent },
   { path: 'members', component: MembersComponent, canActivate: [AuthGuard] },
-  // data: {roles: ["user", "admin"]}
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuard], data: {roles: ["admin"]}},
   { path: 'forum', component: ForumComponent },
   { path: 'cazare', component: CazareComponent },
@@ -35,6 +35,7 @@ const routes: Routes = [
   { path: 'webcam', component: WebcamComponent},
   { path: "servicii", component: ServiciiComponent},
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: 'school', component: ScolischiComponent}
 ];
 
 @NgModule({
