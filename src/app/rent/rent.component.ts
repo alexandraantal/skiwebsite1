@@ -1,18 +1,17 @@
-import { Scoala } from '../scoala.model';
-import { FormGroup, FormControl } from '@angular/forms';
+import { Equip } from './equip.model';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { FirebaseService } from './../firebase.service';
+import { FormGroup, FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-
 
 import { faTrash, faEdit } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
-  selector: 'app-scolischi',
-  templateUrl: './scolischi.component.html',
-  styleUrls: ['./scolischi.component.scss']
+  selector: 'app-rent',
+  templateUrl: './rent.component.html',
+  styleUrls: ['./rent.component.scss']
 })
-export class ScolischiComponent implements OnInit {
+export class RentComponent implements OnInit {
 
   faTrash = faTrash;
   faEdit = faEdit;  
@@ -22,8 +21,7 @@ export class ScolischiComponent implements OnInit {
 
   formTemplate = new FormGroup({
     name: new FormControl(''),
-    tarif: new FormControl(''),
-    tel: new FormControl('')
+    tarif: new FormControl('')
   })
 
   constructor(private firebaseService: FirebaseService, private firestore: AngularFirestore) { }
@@ -34,15 +32,15 @@ export class ScolischiComponent implements OnInit {
   isUpdate: boolean = false;
   editId: string;
 
-  scoli: Scoala[];
+  equips: Equip[];
 
   ngOnInit(): void {
-    this.firestore.collection('scoli').snapshotChanges().subscribe(data => {
-      this.scoli = data.map(e => {
+    this.firestore.collection('equips').snapshotChanges().subscribe(data => {
+      this.equips = data.map(e => {
         return {
           id: e.payload.doc.id,
           ...<any>e.payload.doc.data()
-        } as Scoala;
+        } as Equip;
       })
     });
   }
@@ -63,10 +61,10 @@ export class ScolischiComponent implements OnInit {
   delete data.id;
 
   if(!this.isUpdate)
-    this.firestore.collection('scoli').add(data);
+    this.firestore.collection('equips').add(data);
   else
     {
-      this.firestore.doc('scoli/'+ this.editId).update(data);
+      this.firestore.doc('equips/'+ this.editId).update(data);
       this.isUpdate = false;
     }
   
@@ -80,26 +78,23 @@ export class ScolischiComponent implements OnInit {
     this.formTemplate.reset();
     this.formTemplate.setValue({
       name: '',
-      tarif: '',
-      tel: ''
+      tarif: ''
     });
     this.isSubmitted = false;
     }
 
-
     delete(id: string) {
-      this.firestore.doc('scoli/' + id).delete();
+      this.firestore.doc('equips/' + id).delete();
     }
 
-    onEdit(scoala : Scoala, id: string ){
+    onEdit(equip : Equip, id: string ){
        this.isModalActive=true;
        this.isUpdate = true; 
        this.editId = id;
   
        this.formTemplate.patchValue({
-        name: scoala.name,
-        tarif: scoala.tarif,
-        tel: scoala.tel    
+        name: equip.name,
+        tarif: equip.tarif   
       })
     }
 

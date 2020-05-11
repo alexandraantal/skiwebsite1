@@ -8,25 +8,24 @@
     </div>
     </section>
 
-    <!-- e5f1ef -->
-
     <section class="section is-fullwidth" style="background-color:white; padding-left: 4rem;">
         <div class="columns ">
+
             <div class="column  is-3-tablet is-3-desktop">
 
                 <section class="container" style="background-color:white; padding: 1rem 1rem 1rem 1rem; border-radius: 10px;">
                     
                     
-                    <div style="background-color: #0B8C68; border-radius: 10px;  padding: 0.5rem 0.5rem 0.5rem 0.5rem; cursor: pointer;" routerLink="/school">
+                    <div style="background-color: #0B8C68; border-radius: 10px;  padding: 0.5rem 0.5rem 0.5rem 0.5rem; cursor: pointer;" >
                         
-                            <img  src="assets/image/skischool.png" style="width: 45px;"> 
-                         <span style="color:white; font-weight:bold; font-size: small;">&nbsp;&nbsp;&nbsp;Scoli de schi</span>
+                            <img  src="assets/image/boots.png" style="width: 45px;"> 
+                         <span style="color:white; font-weight:bold; font-size: small;">&nbsp;&nbsp;&nbsp;Inchiriere echipament</span>
                     </div>
 <br>
-                    <div  routerLink="/school" style="cursor: pointer;" routerLink="/rent">
+                    <div  routerLink="/school" style="cursor: pointer;" routerLink="/school">
                         
-                        <img  src="assets/image/boots.png" style="width: 45px;"> 
-                     <span style="color: #424242; font-weight:bold; font-size:small ;">&nbsp;&nbsp;&nbsp;Inchiriere echipament</span>
+                        <img  src="assets/image/skischool.png" style="width: 45px;"> 
+                     <span style="color: #424242; font-weight:bold; font-size:small ;">&nbsp;&nbsp;&nbsp;Scoli de schi</span>
                     </div>
 
                    <br>
@@ -48,9 +47,8 @@
                         <table class="table is-striped " >
                             <thead>
                                 <tr>
-                                 <th>Scoala / Instructor</th>
+                                 <th>Item</th>
                                   <th>Tarif</th>
-                                  <th>Telefon</th>
                                   <th *ngIf="userStatus && (userStatus.role === 'admin')">
                                     Modifica
                                   </th>
@@ -60,16 +58,15 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let scoala of scoli" [class.completed]="scoala.completed"> 
+                                <tr *ngFor="let equip of equips" [class.completed]="equip.completed"> 
                                     
-                                    <td>{{scoala.name}}</td>
-                                    <td>{{scoala.tarif}} lei/h</td>
-                                    <td>{{scoala.tel}}</td>
+                                    <td>{{equip.name}}</td>
+                                    <td>{{equip.tarif}} lei/h</td>
 
                                     <td *ngIf="userStatus && (userStatus.role === 'admin')">
                                       <a >
                                         <span class="icon is-small is-right fas fa-lg">
-                                          <fa-icon [icon]="faEdit" (click)="onEdit(scoala,scoala.id)"></fa-icon>
+                                          <fa-icon [icon]="faEdit" (click)="onEdit(equip,equip.id)"></fa-icon>
                                         </span> 
                                       </a>
                                     </td>
@@ -78,7 +75,7 @@
                             <td *ngIf="userStatus && (userStatus.role === 'admin')">
                               <a >
                                 <span class="icon is-small is-right fas fa-lg">
-                                  <fa-icon [icon]="faTrash" (click)="delete(scoala.id)"></fa-icon>
+                                  <fa-icon [icon]="faTrash" (click)="delete(equip.id)"></fa-icon>
                                 </span> 
                               </a>
                             </td>
@@ -89,14 +86,14 @@
                     </div>
 
                     <a *ngIf="userStatus && (userStatus.role === 'admin')" class="button is-danger" (click)="buttonPress()" >
-                        Adauga scoala
+                        Adauga item
                       </a>
 
                       <div class="modal" [ngClass]="{ 'is-active' : isModalActive }">
                         <div class="modal-background" (click)="toggleModal()"></div>
                         <div class="modal-card">
                           <header class="modal-card-head">
-                            <p class="modal-card-title">Scoala / Instructor</p>
+                            <p class="modal-card-title">Item</p>
                             <button class="delete" aria-label="close" (click)="toggleModal()"></button>
                           </header>
                           <section class="modal-card-body">
@@ -104,13 +101,13 @@
                             <form [formGroup]="formTemplate" (submit)="onSubmit(formTemplate.value)">
                 
                                 <div class="formGroup">
-                                    <label class="label is-medium has-background-white">Nume</label>
+                                    <label class="label is-medium has-background-white">Item</label>
                                       <div class="control">
                                     <input 
                                     class="input is-primary" 
                                     type="text"
                                     formControlName="name" 
-                                    placeholder="Numele scolii / instructorului" 
+                                    placeholder="Denumirea item-ului" 
                                     required>
                                       </div>
                                   </div>
@@ -125,21 +122,7 @@
                                       placeholder="Tariful pe ora" 
                                       required>
                                         </div>
-                                    </div> 
-              
-
-                                    <div class="formGroup">
-                                        <label class="label is-medium has-background-white">Telefon</label>
-                                          <div class="control">
-                                        <input 
-                                        class="input is-primary" 
-                                        type="tel"
-                                        formControlName="tel" 
-                                        placeholder="07XX XXX XXX" 
-                                        required>
-                                          </div>
-                                      </div> 
-              
+                                    </div>               
                                 
                               <div class="buttons is-centered">
                                 <button 
@@ -163,8 +146,8 @@
             </div>
 
             <div class="column  is-3-tablet is-3-desktop">
-                <img src="../../assets/image/school1.jpg">
+                <img src="../../assets/image/rent.jpg">
             </div>
-        </div>
 
+        </div>
     </section>

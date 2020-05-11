@@ -1,3 +1,4 @@
+import { RentComponent } from './rent/rent.component';
 import { ScolischiComponent } from './scolischi/scolischi.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ServiciiComponent } from './servicii/servicii.component';
@@ -35,7 +36,8 @@ const routes: Routes = [
   { path: 'webcam', component: WebcamComponent},
   { path: "servicii", component: ServiciiComponent},
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
-  { path: 'school', component: ScolischiComponent}
+  { path: 'school', component: ScolischiComponent},
+  { path: 'rent', component: RentComponent}
 ];
 
 @NgModule({
