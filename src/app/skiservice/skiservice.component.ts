@@ -1,17 +1,18 @@
-import { Equip } from '../equip.model';
+import { Skiservice } from './../skiservice.model';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { FirebaseService } from './../firebase.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
+
 import { faTrash, faEdit } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
-  selector: 'app-rent',
-  templateUrl: './rent.component.html',
-  styleUrls: ['./rent.component.scss']
+  selector: 'app-skiservice',
+  templateUrl: './skiservice.component.html',
+  styleUrls: ['./skiservice.component.scss']
 })
-export class RentComponent implements OnInit {
+export class SkiserviceComponent implements OnInit {
 
   faTrash = faTrash;
   faEdit = faEdit;  
@@ -32,15 +33,15 @@ export class RentComponent implements OnInit {
   isUpdate: boolean = false;
   editId: string;
 
-  equips: Equip[];
+  skiservices: Skiservice[];
 
   ngOnInit(): void {
-    this.firestore.collection('equips').snapshotChanges().subscribe(data => {
-      this.equips = data.map(e => {
+    this.firestore.collection('skiservices').snapshotChanges().subscribe(data => {
+      this.skiservices = data.map(e => {
         return {
           id: e.payload.doc.id,
           ...<any>e.payload.doc.data()
-        } as Equip;
+        } as Skiservice;
       })
     });
   }
@@ -61,10 +62,10 @@ export class RentComponent implements OnInit {
   delete data.id;
 
   if(!this.isUpdate)
-    this.firestore.collection('equips').add(data);
+    this.firestore.collection('skiservices').add(data);
   else
     {
-      this.firestore.doc('equips/'+ this.editId).update(data);
+      this.firestore.doc('skiservices/'+ this.editId).update(data);
       this.isUpdate = false;
     }
   
@@ -84,17 +85,17 @@ export class RentComponent implements OnInit {
     }
 
     delete(id: string) {
-      this.firestore.doc('equips/' + id).delete();
+      this.firestore.doc('skiservices/' + id).delete();
     }
 
-    onEdit(equip : Equip, id: string ){
+    onEdit(skiservice : Skiservice, id: string ){
        this.isModalActive=true;
        this.isUpdate = true; 
        this.editId = id;
   
        this.formTemplate.patchValue({
-        name: equip.name,
-        tarif: equip.tarif   
+        name: skiservice.name,
+        tarif: skiservice.tarif    
       })
     }
 

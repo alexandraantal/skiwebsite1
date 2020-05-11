@@ -1,3 +1,4 @@
+import { SkiserviceComponent } from './skiservice/skiservice.component';
 import { RentComponent } from './rent/rent.component';
 import { ScolischiComponent } from './scolischi/scolischi.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -37,7 +38,8 @@ const routes: Routes = [
   { path: "servicii", component: ServiciiComponent},
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'school', component: ScolischiComponent},
-  { path: 'rent', component: RentComponent}
+  { path: 'rent', component: RentComponent},
+  { path: 'skiservice', component: SkiserviceComponent}
 ];
 
 @NgModule({

@@ -8,7 +8,6 @@
     </div>
     </section>
 
-
     <section class="section is-fullwidth" style="background-color:white; padding-left: 4rem;">
         <div class="columns ">
             <div class="column  is-3-tablet is-3-desktop">
@@ -18,8 +17,8 @@
                     
                     <div style="background-color: #0B8C68; border-radius: 10px;  padding: 0.5rem 0.5rem 0.5rem 0.5rem; cursor: pointer;" routerLink="/school">
                         
-                            <img  src="assets/image/skischool.png" style="width: 45px;"> 
-                         <span style="color:white; font-weight:bold; font-size: small;">&nbsp;&nbsp;&nbsp;Scoli de schi</span>
+                            <img  src="assets/image/tools.png" style="width: 45px;"> 
+                         <span style="color:white; font-weight:bold; font-size: small;">&nbsp;&nbsp;&nbsp;Service si Intretinere</span>
                     </div>
 <br>
                     <div  routerLink="/school" style="cursor: pointer;" routerLink="/rent">
@@ -30,10 +29,10 @@
 
                    <br>
 
-                   <div  routerLink="/school" style="cursor: pointer;" routerLink="/skiservice">
+                   <div  routerLink="/school" style="cursor: pointer;" routerLink="/school">
                         
-                    <img  src="assets/image/tools.png" style="width: 45px;"> 
-                 <span style="color: #424242; font-weight:bold; font-size:small ;">&nbsp;&nbsp;&nbsp;Service si Intretinere</span>
+                    <img  src="assets/image/skischool.png" style="width: 45px;"> 
+                 <span style="color: #424242; font-weight:bold; font-size:small ;">&nbsp;&nbsp;&nbsp;Scoli de schi</span>
                 </div>
 
                 </section>
@@ -47,9 +46,8 @@
                         <table class="table is-striped " >
                             <thead>
                                 <tr>
-                                 <th>Scoala / Instructor</th>
+                                 <th>Serviciu</th>
                                   <th>Tarif</th>
-                                  <th>Telefon</th>
                                   <th *ngIf="userStatus && (userStatus.role === 'admin')">
                                     Modifica
                                   </th>
@@ -59,16 +57,15 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let scoala of scoli" [class.completed]="scoala.completed"> 
+                                <tr *ngFor="let skiservice of skiservices" [class.completed]="skiservice.completed"> 
                                     
-                                    <td>{{scoala.name}}</td>
-                                    <td>{{scoala.tarif}} lei/h</td>
-                                    <td>{{scoala.tel}}</td>
+                                    <td>{{skiservice.name}}</td>
+                                    <td>{{skiservice.tarif}} lei</td>
 
                                     <td *ngIf="userStatus && (userStatus.role === 'admin')">
                                       <a >
                                         <span class="icon is-small is-right fas fa-lg">
-                                          <fa-icon [icon]="faEdit" (click)="onEdit(scoala,scoala.id)"></fa-icon>
+                                          <fa-icon [icon]="faEdit" (click)="onEdit(skiservice,skiservice.id)"></fa-icon>
                                         </span> 
                                       </a>
                                     </td>
@@ -77,7 +74,7 @@
                             <td *ngIf="userStatus && (userStatus.role === 'admin')">
                               <a >
                                 <span class="icon is-small is-right fas fa-lg">
-                                  <fa-icon [icon]="faTrash" (click)="delete(scoala.id)"></fa-icon>
+                                  <fa-icon [icon]="faTrash" (click)="delete(skiservice.id)"></fa-icon>
                                 </span> 
                               </a>
                             </td>
@@ -88,14 +85,14 @@
                     </div>
 
                     <a *ngIf="userStatus && (userStatus.role === 'admin')" class="button is-danger" (click)="buttonPress()" >
-                        Adauga scoala
+                        Adauga serviciu
                       </a>
 
                       <div class="modal" [ngClass]="{ 'is-active' : isModalActive }">
                         <div class="modal-background" (click)="toggleModal()"></div>
                         <div class="modal-card">
                           <header class="modal-card-head">
-                            <p class="modal-card-title">Scoala / Instructor</p>
+                            <p class="modal-card-title">Serviciu</p>
                             <button class="delete" aria-label="close" (click)="toggleModal()"></button>
                           </header>
                           <section class="modal-card-body">
@@ -103,42 +100,28 @@
                             <form [formGroup]="formTemplate" (submit)="onSubmit(formTemplate.value)">
                 
                                 <div class="formGroup">
-                                    <label class="label is-medium has-background-white">Nume</label>
+                                    <label class="label is-medium has-background-white">Denumire</label>
                                       <div class="control">
                                     <input 
                                     class="input is-primary" 
                                     type="text"
                                     formControlName="name" 
-                                    placeholder="Numele scolii / instructorului" 
+                                    placeholder="Denumirea serviciului" 
                                     required>
                                       </div>
                                   </div>
               
                                     <div class="formGroup">
-                                      <label class="label is-medium has-background-white">Tarif (lei/h)</label>
+                                      <label class="label is-medium has-background-white">Tarif (lei)</label>
                                         <div class="control">
                                       <input 
                                       class="input is-primary" 
                                       type="number"
                                       formControlName="tarif" 
-                                      placeholder="Tariful pe ora" 
+                                      placeholder="Tariful serviciului" 
                                       required>
                                         </div>
                                     </div> 
-              
-
-                                    <div class="formGroup">
-                                        <label class="label is-medium has-background-white">Telefon</label>
-                                          <div class="control">
-                                        <input 
-                                        class="input is-primary" 
-                                        type="tel"
-                                        formControlName="tel" 
-                                        placeholder="07XX XXX XXX" 
-                                        required>
-                                          </div>
-                                      </div> 
-              
                                 
                               <div class="buttons is-centered">
                                 <button 
@@ -162,7 +145,7 @@
             </div>
 
             <div class="column  is-3-tablet is-3-desktop">
-                <img src="../../assets/image/school2.jpg">
+                <img src="../../assets/image/skis.jpg">
             </div>
         </div>
 

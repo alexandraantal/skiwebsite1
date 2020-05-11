@@ -45,6 +45,7 @@ import { MypostsComponent } from './myposts/myposts.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { ScolischiComponent } from './scolischi/scolischi.component';
 import { RentComponent } from './rent/rent.component';
+import { SkiserviceComponent } from './skiservice/skiservice.component';
 
 
 
@@ -87,7 +88,8 @@ export const firebaseConfig = {
     MypostsComponent,
     UserListComponent,
     ScolischiComponent,
-    RentComponent
+    RentComponent,
+    SkiserviceComponent
   ],
   imports: [
     BrowserModule,
