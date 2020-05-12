@@ -74,7 +74,7 @@
     </td>
             <td *ngIf="userStatus && (userStatus.role === 'admin')">
               <a >
-                <span class="icon is-large is-right fas fa-lg">
+                <span class="icon is-large is-right fas fa-lg" style="color: #0B8C68;">
                   <fa-icon [icon]="faEdit" (click)="onEdit(partie,partie.id)"></fa-icon>
                 </span> 
               </a>
@@ -83,7 +83,7 @@
     
     <td *ngIf="userStatus && (userStatus.role === 'admin')">
       <a >
-        <span class="icon is-large is-right fas fa-lg">
+        <span class="icon is-large is-right fas fa-lg" style="color: #0B8C68;">
           <fa-icon [icon]="faTrash" (click)="delete(partie.id)"></fa-icon>
         </span> 
       </a>

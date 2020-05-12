@@ -8,8 +8,8 @@
            
           <p class="card-header-title" style="font-size: 27px">{{ post.title }} </p> &nbsp;&nbsp;
             
-          <a  *ngIf="userStatus && (userStatus.role === 'admin')">
-            <span class="icon is-large is-right fas fa-lg">
+          <a  *ngIf="userStatus && ((userStatus.role === 'admin') || (userStatus.authId === post.userId))">
+            <span class="icon is-large is-right fas fa-lg" style="color: #0B8C68;">
               <fa-icon [icon]="faTrash" (click)="delete(post.id)"></fa-icon>
             </span> 
           </a>

@@ -24,7 +24,6 @@ import { AuthGuard } from './auth.service';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AdminComponent } from './admin/admin.component';
 import { ForumComponent } from './forum/forum.component';
-import { PostListComponent } from './post-list/post-list.component';
 import { CazareComponent } from './cazare/cazare.component';
 
 import { AngularFireStorageModule } from 'angularfire2/storage';
@@ -71,7 +70,6 @@ export const firebaseConfig = {
     SignupComponent,
     AdminComponent,
     ForumComponent,
-    PostListComponent,
     CazareComponent,
     CazareListComponent,
     StarReviewComponent,

@@ -19,13 +19,13 @@
                     <div style="background-color: #0B8C68; border-radius: 10px;  padding: 0.5rem 0.5rem 0.5rem 0.5rem; cursor: pointer;" >
                         
                             <img  src="assets/image/boots.png" style="width: 45px;"> 
-                         <span style="color:white; font-weight:bold; font-size: small;">&nbsp;&nbsp;&nbsp;Inchiriere echipament</span>
+                         <span style="color:white; font-weight:bold; font-size: small;">&nbsp;&nbsp;Inchiriere echipament</span>
                     </div>
 <br>
                     <div  routerLink="/school" style="cursor: pointer;" routerLink="/school">
                         
                         <img  src="assets/image/skischool.png" style="width: 45px;"> 
-                     <span style="color: #424242; font-weight:bold; font-size:small ;">&nbsp;&nbsp;&nbsp;Scoli de schi</span>
+                     <span style="color: #424242; font-weight:bold; font-size:small ;">&nbsp;&nbsp;Scoli de schi</span>
                     </div>
 
                    <br>
@@ -33,7 +33,7 @@
                    <div  routerLink="/school" style="cursor: pointer;" routerLink="/skiservice">
                         
                     <img  src="assets/image/tools.png" style="width: 45px;"> 
-                 <span style="color: #424242; font-weight:bold; font-size:small ;">&nbsp;&nbsp;&nbsp;Service si Intretinere</span>
+                 <span style="color: #424242; font-weight:bold; font-size:small ;">&nbsp;&nbsp;Service si Intretinere</span>
                 </div>
 
                 </section>
@@ -65,7 +65,7 @@
 
                                     <td *ngIf="userStatus && (userStatus.role === 'admin')">
                                       <a >
-                                        <span class="icon is-small is-right fas fa-lg">
+                                        <span class="icon is-small is-right fas fa-lg" style="color: #0B8C68;">
                                           <fa-icon [icon]="faEdit" (click)="onEdit(equip,equip.id)"></fa-icon>
                                         </span> 
                                       </a>
@@ -74,7 +74,7 @@
                             
                             <td *ngIf="userStatus && (userStatus.role === 'admin')">
                               <a >
-                                <span class="icon is-small is-right fas fa-lg">
+                                <span class="icon is-small is-right fas fa-lg" style="color: #0B8C68;">
                                   <fa-icon [icon]="faTrash" (click)="delete(equip.id)"></fa-icon>
                                 </span> 
                               </a>
