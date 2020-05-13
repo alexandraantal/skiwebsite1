@@ -37,7 +37,7 @@
     #nameInput="ngModel"
     required>
   </div>
-  <div class="help is-error" *ngIf="nameInput.invalid && nameInput.touched">
+  <div class="help is-error" *ngIf="nameInput.invalid && nameInput.touched" style="color: red;">
     Numele este necesar.
   </div>
 </div>
@@ -61,8 +61,8 @@
     </span>
   </div>
   
-  <div class="help is-error" *ngIf="emailInput.invalid && emailInput.touched">
-    Adresa de email nu este valida.
+  <div class="help is-error" *ngIf="emailInput.touched" style="color: red;">
+    Adresa de email este necesara.
   </div>
  </div>
 
@@ -84,10 +84,13 @@
         <fa-icon [icon]="faLock"></fa-icon>
       </span>
   </div>
-  <div class="help is-error" *ngIf="passwordInput.invalid && passwordInput.touched">
-    Parola invalida
+  <div class="help is-error" *ngIf="passwordInput.invalid && passwordInput.touched" style="color: red;">
+    Parola este prea scurta.
   </div>
   </div>
+
+  <p style="color: red;">{{signupError}}</p>
+  <br>
 
   <button 
   type="submit" 
@@ -97,6 +100,10 @@
   
   Creeaza cont
 </button>
+<br>
+<br>
+<a class="subtitle is-large">Ai deja unul?</a>
+<a class="subtitle is-large" routerLink="/login-email"><strong> Intra in cont!</strong></a>
 
 </form>
     </div>

@@ -4,7 +4,7 @@ import { Injectable, NgZone } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import {Router} from "@angular/router";
 import { AngularFirestore } from '@angular/fire/firestore';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable, BehaviorSubject, from } from 'rxjs';
 import * as firebase from 'firebase/app';
 
 @Injectable({
@@ -18,6 +18,7 @@ export class FirebaseService {
   public userStatus: any;
   public userStatusChanges: BehaviorSubject<string> = new BehaviorSubject<string>(this.userStatus);
 
+
    
 
   setUserStatus(userStatus: any): void {
@@ -26,11 +27,10 @@ export class FirebaseService {
   }
 
 
-
   signUp(email:string, password:string, name:string){
   
     
-    this.afAuth.auth.createUserWithEmailAndPassword(email, password)
+    return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
      .then((userResponse)=>{
        // add the user to the "users" database
        let user = {
@@ -56,15 +56,15 @@ export class FirebaseService {
        
       
      })
-     .catch((err)=>{
-        console.log("An error ocurred: ", err);
-     })
+    //  .catch((err)=>{
+    //     console.log("An error ocurred: ", err);
+    //  })
  
     }
 
     login(email: string, password: string) {
-      
-      this.afAuth.auth.signInWithEmailAndPassword(email, password)
+
+      return (this.afAuth.auth.signInWithEmailAndPassword(email, password)
       .then((user)=>{
         this.firestore.collection("users").ref.where("username", "==", user.user.email).onSnapshot(snap =>{
           snap.forEach(userRef => {
@@ -85,8 +85,11 @@ export class FirebaseService {
           })
         })
        
-      }).catch(err => err)
+      }));
+      
+     
   }
+
 
   logOut(){
     this.afAuth.auth.signOut()

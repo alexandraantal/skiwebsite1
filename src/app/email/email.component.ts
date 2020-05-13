@@ -29,7 +29,7 @@ export class EmailComponent implements OnInit {
   password: string;
 
   state: string = '';
-  error: any;
+  loginError: any = "";
 
   constructor(public af: AngularFireAuth,private router: Router, private firebaseService: FirebaseService) {
   // this.af.authState.subscribe(auth => { 
@@ -57,20 +57,46 @@ onSubmit(formData) {
     //   this.error = err;
     // })
 
-    this.firebaseService.login(formData.value.email, formData.value.password);
-
+    this.firebaseService.login(formData.value.email, formData.value.password).catch((error) => {
+      switch (error.code) {
+        case "auth/invalid-email":
+          {
+            this.loginError = "Adresa de email este invalida.";
+            break;
+         }
+        case "auth/wrong-password":
+          {
+            this.loginError = "Parola este gresita.";
+            break;
+         }
+        case "auth/user-not-found":
+        {
+           this.loginError = "Utilizatorul nu exista.";
+           break;
+        }
+           default:
+        {
+            this.loginError = "Eroare neasteptata";
+            break;
+        }
+   }
+   console.log(this.loginError)
+})
   }
+  
 }
 
-loginGoogle() {
-  this.af.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then(
-      (success) => {
-      this.router.navigate(['/profile']);
-    }).catch(
-      (err) => {
-      this.error = err;
-    })
-}
+
+
+// loginGoogle() {
+//   this.af.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then(
+//       (success) => {
+//       this.router.navigate(['/profile']);
+//     }).catch(
+//       (err) => {
+//       this.error = err;
+//     })
+// }
 
   ngOnInit(): void {
   }

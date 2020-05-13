@@ -28,7 +28,9 @@ export class SignupComponent implements OnInit {
   name: string;
 
   state: string = '';
-  error: any;
+
+  signupError: any = "";
+  
 
   constructor(public af: AngularFireAuth,private router: Router, private db: AngularFireDatabase, private firebaseService: FirebaseService) {
 
@@ -60,7 +62,32 @@ export class SignupComponent implements OnInit {
       //   this.error = err;
       // })
 
-      this.firebaseService.signUp(formData.value.email, formData.value.password, formData.value.name);
+      this.firebaseService.signUp(formData.value.email, formData.value.password, formData.value.name).catch((error) => {
+        switch (error.code) {
+          case "auth/email-already-in-use":
+            {
+              this.signupError = "Utilizatorul exista deja.";
+              break;
+           }
+          case "auth/invalid-email":
+            {
+              this.signupError = "Adresa de email invalida.";
+              break;
+           }
+          case "auth/weak-password":
+          {
+             this.signupError = "Parola este prea slaba";
+             break;
+          }
+             default:
+          {
+              this.signupError = "Eroare neasteptata";
+              break;
+          }
+     }
+     console.log(this.signupError)
+  })
+      
 
     }
   }
