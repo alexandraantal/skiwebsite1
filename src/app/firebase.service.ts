@@ -1,10 +1,8 @@
-import { Post } from './post.model';
-import { PostService } from './post.service';
 import { Injectable, NgZone } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import {Router} from "@angular/router";
 import { AngularFirestore } from '@angular/fire/firestore';
-import { Observable, BehaviorSubject, from } from 'rxjs';
+import {BehaviorSubject} from 'rxjs';
 import * as firebase from 'firebase/app';
 
 @Injectable({
@@ -18,8 +16,6 @@ export class FirebaseService {
   public userStatus: any;
   public userStatusChanges: BehaviorSubject<string> = new BehaviorSubject<string>(this.userStatus);
 
-
-   
 
   setUserStatus(userStatus: any): void {
     this.userStatus = userStatus;
@@ -57,28 +53,19 @@ export class FirebaseService {
 
       return (this.afAuth.auth.signInWithEmailAndPassword(email, password)
       .then((user)=>{
-        this.firestore.collection("users").ref.where("username", "==", user.user.email).onSnapshot(snap =>{
+        this.firestore.collection("users").ref.where("username", "==", user.user.email)
+        .onSnapshot(snap =>{
           snap.forEach(userRef => {
             console.log("userRef", userRef.data());
             this.currentUser = userRef.data();
-            //setUserStatus
+            
             this.setUserStatus(this.currentUser)
-
-            // console.log(this.currentUser.name);
-
-            // if(userRef.data().role !== "admin") {
-            //   this.router.navigate(["/profile"]);
-            // }else{
-            //   this.router.navigate(["/admin"]);
-            // }
 
             this.router.navigate(["/profile"]);
           })
         })
        
       }));
-      
-     
   }
 
 
@@ -86,9 +73,9 @@ export class FirebaseService {
     this.afAuth.auth.signOut()
     .then(()=>{
       console.log("user signed Out successfully");
-      //set current user to null to be logged out
+      
       this.currentUser = null;
-      //set the listenener to be null, for the UI to react
+  
       this.setUserStatus(null);
       this.ngZone.run(() => this.router.navigate(["/"]));
 
