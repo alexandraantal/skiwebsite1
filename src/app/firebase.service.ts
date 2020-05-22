@@ -26,13 +26,11 @@ export class FirebaseService {
     this.userStatusChanges.next(userStatus);
   }
 
-
   signUp(email:string, password:string, name:string){
   
-    
     return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
      .then((userResponse)=>{
-       // add the user to the "users" database
+       
        let user = {
         authId: userResponse.user.uid,
         username: userResponse.user.email,
@@ -40,11 +38,10 @@ export class FirebaseService {
         role: "user",
        }
        
-       //add the user to the database
        this.firestore.collection("users").add(user)
        .then(user => {
         user.get().then(x => {
-          //return the user data
+         
           console.log(x.data());
           this.currentUser = x.data();
           this.setUserStatus(this.currentUser);
@@ -52,14 +49,8 @@ export class FirebaseService {
         })
        }).catch(err => {
          console.log(err);
-       })
-       
-      
+       }) 
      })
-    //  .catch((err)=>{
-    //     console.log("An error ocurred: ", err);
-    //  })
- 
     }
 
     login(email: string, password: string) {

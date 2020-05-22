@@ -48,7 +48,6 @@ import { SkiserviceComponent } from './skiservice/skiservice.component';
 
 
 
-//import { CommonModule } from '@angular/common'; 
 
 export const firebaseConfig = {
   apiKey: "AIzaSyCgHU0VysKuDjqdsCdY0VDQpDkzg77b8F8",
@@ -96,8 +95,8 @@ export const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    FontAwesomeModule,
     AngularFireStorageModule,
+    FontAwesomeModule,
     ReactiveFormsModule
   ],
   providers: [AuthGuard,

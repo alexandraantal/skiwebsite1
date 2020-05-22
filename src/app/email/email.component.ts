@@ -7,7 +7,6 @@ import { of } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
 import * as firebase from 'firebase/app';
 import { Router } from '@angular/router';
- import { moveIn, fallIn } from '../router.animations';
 
  import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable, BehaviorSubject } from 'rxjs';
