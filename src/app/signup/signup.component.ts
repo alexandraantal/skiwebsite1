@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
-import { AngularFireDatabase, AngularFireList} from 'angularfire2/database';
-import { Observable } from "rxjs";
-import { of } from 'rxjs';
-import { tap, catchError } from 'rxjs/operators';
-import * as firebase from 'firebase/app';
+import {AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireDatabase} from 'angularfire2/database';
 import { Router } from '@angular/router';
 
 import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
