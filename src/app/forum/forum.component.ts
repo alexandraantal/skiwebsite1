@@ -28,8 +28,6 @@ export class ForumComponent implements OnInit {
 
   pageOfItems: Array<any>;
 
-  // title: string;
-  // message: string;
 
   isSubmitted: boolean;
 
@@ -41,13 +39,10 @@ export class ForumComponent implements OnInit {
   constructor(private firebaseService: FirebaseService, private router: Router,private firestore: AngularFirestore, private postService: PostService, private paginationService: PaginationService ){}
 
   
-  // Array of all items
 private allItems: any = [];
 
-// Pagination object
 pagination: any = {};
 
-// Paged items
 pagedItems: any[];
 
 
@@ -66,21 +61,15 @@ ngOnInit(){
         id: e.payload.doc.id,
         ...<any>e.payload.doc.data()
       } as Post;
-      
     })
-   // console.log(this.posts)
 
-   this.allItems = this.posts;   // Load data into allItems
-  this.setPage(1); 
-  
+   this.allItems = this.posts;   
+  this.setPage(1);  
   });
-
 }
 
 buttonPress(){
-  if(this.userStatus){
-    // this.router.navigate(["/post"]);
-    
+  if(this.userStatus){    
     this.isModalActive = !this.isModalActive;
   }
   else {
@@ -89,35 +78,24 @@ buttonPress(){
   
 }
 
-// onSubmit(formData) {
-//   if(formData.valid) {
-//     this.firebaseService.newPost(formData.value.title, formData.value.message);
-//     var resetForm=<HTMLFormElement>document.getElementById("myForm");
-//     resetForm.reset();
-//     this.isModalActive = false;
-//   }
-// }
-
 onSubmit(formValue) {
   this.isSubmitted = true;
   
 if (this.formTemplate.valid) {
-let data = Object.assign({}, formValue);
-delete data.id;
+  let data = Object.assign({}, formValue);
+  delete data.id;
 
-if(!this.isUpdate)
-this.firebaseService.newPost(formValue.title, formValue.message);
-else
-  {
-    this.firestore.doc('posts/'+ this.editId).update(data);
-    this.isUpdate = false;
-  }
-
-
+  if(!this.isUpdate)
+  this.firebaseService.newPost(formValue.title, formValue.message);
+  else
+    {
+      this.firestore.doc('posts/'+ this.editId).update(data);
+      this.isUpdate = false;
+    }
+    
 this.resetForm();
 this.isModalActive=false;
-}
-}
+}}
 
 resetForm() {
   this.formTemplate.reset();
@@ -133,8 +111,7 @@ toggleModal() {
 }
 
 
-delete(id: string) {
-this.firestore.doc('posts/' + id).delete();
+delete(id: string) {  this.firestore.doc('posts/' + id).delete();
 } 
 
 onEdit(post : Post, id: string ){
@@ -153,13 +130,11 @@ setPage(page: number) {
 if (page < 1 || page > this.pagination.totalPages) {
   return;
 }
-// Get pagination object from service
+
 this.pagination = this.paginationService.getPagination(this.posts.length, page);
 
-// Get current page of items
 this.pagedItems = this.posts.slice(this.pagination.startIndex, this.pagination.endIndex + 1);
 }
-
 
 
 }

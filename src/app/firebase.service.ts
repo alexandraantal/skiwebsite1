@@ -115,7 +115,6 @@ export class FirebaseService {
 
   newPost(title:string, message:string){
   
-    //add the post to the "posts" database
     let post = {
      user: this.userStatus.name,
      userId: this.userStatus.authId,
@@ -123,22 +122,6 @@ export class FirebaseService {
      message: message,
      created: firebase.firestore.FieldValue.serverTimestamp()
     }
-
-    
-    // //add the post to the database
-    // this.firestore.collection("posts").add(post)
-    // .then(post => {
-    //  post.get().then(x => {
-    //    //return the user data
-    //    console.log(x.data());
-    //   //  this.currentUser = x.data();
-    //   //  this.setUserStatus(this.currentUser);
-    //    this.router.navigate(["/forum"]);
-    //  })
-    // }
-    // ).catch(err => {
-    //   console.log(err);
-    // })
 
     this.firestore.collection('posts').add(post);
  }

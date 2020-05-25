@@ -1,6 +1,9 @@
+import { AngularFirestore } from '@angular/fire/firestore';
 import { CommentService } from './../comment.service';
 import { FirebaseService } from './../firebase.service';
 import { Component, OnInit, Input } from '@angular/core';
+
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-comment-list',
@@ -9,11 +12,14 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class CommentListComponent implements OnInit {
 
+  faTrash = faTrash;
+
   @Input() postId;
+  @Input() userPostId;
 
   comments: Comment[];
 
-  constructor(private firebaseService: FirebaseService, private commentService: CommentService) { }
+  constructor(private firebaseService: FirebaseService, private commentService: CommentService, private firestore: AngularFirestore) { }
 
   userStatus = this.firebaseService.userStatus;
 
@@ -36,6 +42,10 @@ export class CommentListComponent implements OnInit {
   toggleComments(){
       this.showVar = !this.showVar;
   }
+
+  delete(id: string) { 
+    this.firestore.doc('comments/' + id).delete();
+}
     
 
 }

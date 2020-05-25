@@ -2,9 +2,20 @@
     <a  class="card-footer-item" (click)="toggleComments()">Comentarii</a>
   </footer>
   <div *ngIf="showVar">
+    <div class="card-footer" *ngIf="(comments)?.length==0">
+      <div class="card-footer-item" style="justify-content: flex-start;">
+      <p> Nu exista nici un comentariu!</p>
+    </div>
+    </div>
+
   <div class="card-footer" *ngFor="let comment of comments" [class.completed]="comment.completed">
           <div class="card-footer-item" style="justify-content: flex-start;">
             &nbsp; <strong>{{comment.userName}} :</strong> &nbsp;&nbsp;  {{comment.message}}
           </div>
+          <a  *ngIf="userStatus && ((userStatus.role === 'admin') || (userStatus.authId === comment.userId) || (userStatus.authId === userPostId))">
+            <span class="icon is-large is-right fas fa-lg" style="color: #0B8C68;">
+              <fa-icon [icon]="faTrash" (click)="delete(comment.id)"></fa-icon>
+            </span> 
+          </a>
       </div>
   </div>

@@ -15,7 +15,6 @@ export class CommentComponent implements OnInit {
   @Input() userName;
   @Input() postId;
 
-  // comments: Comment[];
   message: string;
 
   constructor(private firebaseService: FirebaseService, private commentService: CommentService) { }
@@ -23,19 +22,7 @@ export class CommentComponent implements OnInit {
   userStatus = this.firebaseService.userStatus;
 
   ngOnInit(): void {
-
-    // this.comments = this.commentService.getPostComments(this.postId);
-
-    // this.commentService.getPostComments(this.postId).subscribe(data => {
-    //   this.comments = data.map(e => {
-    //     return {
-    //       id: e.payload.doc.id,
-    //       ...<any>e.payload.doc.data()
-    //     } as Comment;
-    //   })
-    // });
-
-
+    
   }
 
   onSubmit(formData){
@@ -49,10 +36,5 @@ export class CommentComponent implements OnInit {
   
   }
   
-  // showVar: boolean = false;
-  
-  // toggleComments(){
-  //     this.showVar = !this.showVar;
-  // }
     
 }
