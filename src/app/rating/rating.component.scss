@@ -11,31 +11,6 @@ h1 {
 	font-size: 1.5em;
 	margin: 10px;
  }
-// .rating {
-// 	border: none;
-// 	float: left;
-// 	& > input {
-// 		display: none;
-// 	}
-// 	& > label {
-// 		color: #ddd;
-// 		float: right;
-// 		&:before {
-// 			margin: 5px;
-// 			font-size: 1.25em;
-// 			font-family: FontAwesome;
-// 			display: inline-block;
-// 			content: "\f005";
-// 		}
-// 	}
-// 	// & > .half {
-// 	// 	&:before {
-// 	// 		content: "\f089";
-// 	// 		position: absolute;
-// 	// 	}
-// 	// }
-// }
-
 
 .rating { 
 	border: none;
@@ -61,8 +36,6 @@ h1 {
    float: right; 
   }
 
-
-
 .rating > input:checked ~ label,
 .rating:not(:checked) > label:hover, 
 .rating:not(:checked) > label:hover ~ label {
@@ -74,3 +47,4 @@ h1 {
 .rating > input:checked ~ label:hover ~ label {
 	color: #FFED85;
 }
+

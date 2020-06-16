@@ -1,5 +1,7 @@
 
-    <div class="container">
+<div class="columns is-multiline" >
+  <div class="column is-12" >
+    <div class="container" style="overflow-x:auto;">
   <table class="table is-striped"  style="width: 80%; margin: auto;" >
       <thead>
           <tr>
@@ -7,20 +9,12 @@
               <th>Nivel</th>
               <th>Lungime</th>
               <th>Nocturna</th>
-              <th>Functionare
-
-                  <img src="../../assets/image/skilift.png" width="25" height="25">
-              </th>
-
-              <th *ngIf="userStatus && (userStatus.role === 'admin')">
-                Modifica
-              </th>
-              <th *ngIf="userStatus && (userStatus.role === 'admin')">
-                Sterge
-              </th>
-              
+              <th>Functionare <img src="../../assets/image/skilift.png" width="25" height="25"> </th>
+              <th *ngIf="userStatus && (userStatus.role === 'admin')"> Modifica </th>
+              <th *ngIf="userStatus && (userStatus.role === 'admin')"> Sterge </th>
           </tr>
       </thead>
+
       <tbody>
     <tr *ngFor="let partie of partii" [class.completed]="partie.completed"> 
     <td>{{partie.name}}</td>
@@ -49,12 +43,8 @@
     </td>
     <td>{{partie.length}} m</td>
     <td>
-        <div *ngIf="partie.nocturna=='da'">
-        Da
-        </div>
-        <div *ngIf="partie.nocturna=='nu'">
-            Nu
-        </div>
+        <div *ngIf="partie.nocturna=='da'"> Da </div>
+        <div *ngIf="partie.nocturna=='nu'"> Nu </div>
     </td>
     <td>
         <div *ngIf="partie.lift=='da'">
@@ -93,9 +83,11 @@
 </tbody>
 </table>
 </div>
+</div>
 
-<br>
-    <div class="container" style="font-size: small;">
+<div class="column is-6-desktop is-12-tablet is-12-mobile" >
+
+    <div class="container has-text-centered" style="font-size: small;">
         <span><b>Nivel: &nbsp;</b></span>
         <span>Incepator </span>
         <span class="icon is-medium is-center">
@@ -115,8 +107,14 @@
             <fa-icon [icon]="faSquare"></fa-icon>
           </i>
           </span>
+    </div>
+</div>
+
+<div class="column is-6-desktop is-12-tablet is-12-mobile" >
+
+  <div class="container has-text-centered" style="font-size: small;">
           <a  *ngIf="userStatus && (userStatus.role === 'admin')">
-          <button class="button is-primary" style="float: right;" (click)="buttonPress()">Adauga partie</button>
+          <button class="button is-primary"  (click)="buttonPress()">Adauga partie</button>
         </a>
 
         <div class="modal" [ngClass]="{ 'is-active' : isModalActive }">
@@ -233,4 +231,6 @@
         </div>
 
     </div>
+</div>
+  </div>
   

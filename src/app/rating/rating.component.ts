@@ -23,7 +23,7 @@ export class RatingComponent implements OnInit {
   }
 
   starHandler(value) {
-    console.log("am dat click")
+
     this.starService.setStar(this.userId, this.cazareId, value)
   }
 

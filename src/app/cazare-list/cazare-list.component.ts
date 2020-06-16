@@ -4,7 +4,6 @@ import { FirebaseService } from './../firebase.service';
 import { CazareService } from './../cazare.service';
 import { Component, OnInit } from '@angular/core';
 
-import { AngularFireStorageModule } from 'angularfire2/storage';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { finalize } from "rxjs/operators";
@@ -93,23 +92,6 @@ buttonPress(){
   this.isModalActive = !this.isModalActive;
 }
 
-// onSubmit(formValue) {
-// this.isSubmitted = true;
-// if (this.formTemplate.valid) {
-//   var filePath = `images/${this.selectedImage.name}_${new Date().getTime()}`;
-//   const fileRef = this.storage.ref(filePath);
-//   this.storage.upload(filePath, this.selectedImage).snapshotChanges().pipe(
-//     finalize(() => {
-//       fileRef.getDownloadURL().subscribe((url) => {
-//         formValue['imageURL'] = url;
-//         this.firebaseService.newCazare(formValue);
-//         this.resetForm();
-//         this.isModalActive=false;
-//       })
-//     })
-//   ).subscribe();
-// }
-// }
 
 onSubmit(formValue) {
   this.isSubmitted = true;
@@ -130,7 +112,6 @@ onSubmit(formValue) {
     ).subscribe();
   }
   else{
-    // this.firestore.doc('cazari/'+ this.editId).update(data);
     var filePath = `images/${this.selectedImage.name}_${new Date().getTime()}`;
     const fileRef = this.storage.ref(filePath);
     this.storage.upload(filePath, this.selectedImage).snapshotChanges().pipe(

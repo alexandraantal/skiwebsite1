@@ -84,11 +84,6 @@ if (this.formTemplate.valid) {
   delete data.id;
   console.log(formValue.id)
 
-  // if(formValue.id == null)
-  //    this.firestore.collection('partii').add(data);
-  // else
-  //    //this.firestore.doc('partii/'+ formValue.id).update(data);
-  //    this.update(data);
 
   if(!this.isUpdate)
     this.firestore.collection('partii').add(data);

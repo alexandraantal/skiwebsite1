@@ -11,19 +11,18 @@
 
   <section class="container" >
         <div class="columns">
-            <div class="column is-2">
+            <div class="column is-2-desktop is-12-mobile" >
                 <section class="section">
 
-                    <a class="button is-primary  is-large" (click)="buttonSemenic()">Semenic</a>
+                    <a class="button is-primary  is-large is-fullwidth" (click)="buttonSemenic()">Semenic</a>
 
-                    <a class="button is-primary  is-large" (click)="buttonValiug()">Valiug</a>
-                    <br>
+                    <a class="button is-primary  is-large is-fullwidth" (click)="buttonValiug()">Valiug</a>
                     <br>
                     
-                    <a class="button is-primary is-outlined" (click)="buttonStrat()">&nbsp;Stratul de zapada&nbsp;</a>
+                    <a class="button is-primary is-outlined is-fullwidth" (click)="buttonStrat()">&nbsp;Stratul de zapada&nbsp;</a>
                 </section>
             </div>
-            <div *ngIf="start" class="column is-5 ">
+            <div *ngIf="start" class="column is-5-desktop notvisible">
                 <section class="section">
                 
                     <div   class="card" style="border-radius: 10px;">
@@ -33,7 +32,7 @@
                     </div>
                 </section> 
                 </div>
-                <div *ngIf="start" class="column is-5 ">
+                <div *ngIf="start" class="column is-5-desktop notvisible">
                     <section class="section">
                     <div  class="card" style="border-radius: 10px;">
                         <div class="card-content">
@@ -48,18 +47,18 @@
         <section class="section">
         
             <div  class="card" style="border-radius: 10px;">
-                <div class="card-content">
-                    <iframe src="https://www.meteoblue.com/ro/vreme/widget/three/v%c4%83liug_rom%c3%a2nia_663237?geoloc=fixed&nocurrent=0&noforecast=0&days=7&tempunit=CELSIUS&windunit=KILOMETER_PER_HOUR&layout=bright"  frameborder="0" scrolling="NO" allowtransparency="true" sandbox="allow-same-origin allow-scripts allow-popups allow-popups-to-escape-sandbox" style="width: 100%; height: 620px"></iframe><div><!-- DO NOT REMOVE THIS LINK --><a href="https://www.meteoblue.com/ro/vreme/s%C4%83pt%C4%83m%C3%A2na/v%c4%83liug_rom%c3%a2nia_663237?utm_source=weather_widget&utm_medium=linkus&utm_content=three&utm_campaign=Weather%2BWidget" target="_blank">meteoblue</a></div>                            
+                <div class="card-content ">
+                    <iframe class="vreme" src="https://www.meteoblue.com/ro/vreme/widget/three/v%c4%83liug_rom%c3%a2nia_663237?geoloc=fixed&nocurrent=0&noforecast=0&days=7&tempunit=CELSIUS&windunit=KILOMETER_PER_HOUR&layout=bright"  frameborder="0" scrolling="NO" allowtransparency="true" sandbox="allow-same-origin allow-scripts allow-popups allow-popups-to-escape-sandbox" ></iframe><div><!-- DO NOT REMOVE THIS LINK --><a href="https://www.meteoblue.com/ro/vreme/s%C4%83pt%C4%83m%C3%A2na/v%c4%83liug_rom%c3%a2nia_663237?utm_source=weather_widget&utm_medium=linkus&utm_content=three&utm_campaign=Weather%2BWidget" target="_blank">meteoblue</a></div>                            
                 </div>
             </div>
         </section> 
         </div>
 
-        <div *ngIf="semenic" class="column is-10 ">
+        <div *ngIf="semenic" class="column is-10 " >
             <section class="section">
             <div  class="card" style="border-radius: 10px;">
                 <div class="card-content">
-                    <iframe src="https://www.meteoblue.com/ro/vreme/widget/three/semenic_rom%c3%a2nia_8659196?geoloc=fixed&nocurrent=0&noforecast=0&days=7&tempunit=CELSIUS&windunit=KILOMETER_PER_HOUR&layout=bright"  frameborder="0" scrolling="NO" allowtransparency="true" sandbox="allow-same-origin allow-scripts allow-popups allow-popups-to-escape-sandbox" style="width: 100%; height: 620px"></iframe><div><!-- DO NOT REMOVE THIS LINK --><a href="https://www.meteoblue.com/ro/vreme/s%C4%83pt%C4%83m%C3%A2na/semenic_rom%c3%a2nia_8659196?utm_source=weather_widget&utm_medium=linkus&utm_content=three&utm_campaign=Weather%2BWidget" target="_blank">meteoblue</a></div>
+                    <iframe class="vreme" src="https://www.meteoblue.com/ro/vreme/widget/three/semenic_rom%c3%a2nia_8659196?geoloc=fixed&nocurrent=0&noforecast=0&days=7&tempunit=CELSIUS&windunit=KILOMETER_PER_HOUR&layout=bright"  frameborder="0" scrolling="NO" allowtransparency="true" sandbox="allow-same-origin allow-scripts allow-popups allow-popups-to-escape-sandbox" ></iframe><div><!-- DO NOT REMOVE THIS LINK --><a href="https://www.meteoblue.com/ro/vreme/s%C4%83pt%C4%83m%C3%A2na/semenic_rom%c3%a2nia_8659196?utm_source=weather_widget&utm_medium=linkus&utm_content=three&utm_campaign=Weather%2BWidget" target="_blank">meteoblue</a></div>
                 </div>
             </div>
         </section> 
@@ -70,7 +69,7 @@
     <div  class="card" style="border-radius: 10px;">
         <div class="card-content">
             <a href="http://www.meteoromania.ro/" target="blank_">
-            <img src="http://www.meteoromania.ro/images/clima/SZA_orar_interpolat.png" style="cursor: pointer; width: 100%; height: 620px; float: none;">
+            <img class="vreme" src="http://www.meteoromania.ro/images/clima/SZA_orar_interpolat.png" style="cursor: pointer; float: none;">
         </a>
          </div>
     </div>

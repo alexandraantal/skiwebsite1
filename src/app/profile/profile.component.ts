@@ -106,9 +106,6 @@ export class ProfileComponent implements OnInit {
     this.userl = true;
   }
 
-  // buttonPress(){
-  //   this.isModalActive = !this.isModalActive;
-  // }
 
   onSubmit(formValue){
 
@@ -116,7 +113,6 @@ export class ProfileComponent implements OnInit {
 
       
       this.afs.doc('users/'+ this.userId).update({name : formValue.name});
-      //alert('Modificarile au fost salvate');
       this.toggleModal();
     }
 

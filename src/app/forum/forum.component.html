@@ -67,7 +67,7 @@
         </div>
       </div>
 
-      <img src='/assets/image/forum.png'>
+      <img class="img" src='/assets/image/forum.png'>
       
     </section>
     </div>
@@ -121,7 +121,8 @@
      
           <ul *ngIf="pagination.pages && pagination.pages.length" class="pagination-list">
             <li *ngFor="let page of pagination.pages">
-              <a class="pagination-link" [class.is-current]="pagination.currentPage === page" aria-label="Goto page 1" (click)="setPage(page)">{{ page }}</a>
+              <a class="pagination-link" [class.is-current]="pagination.currentPage === page" aria-label="Goto page 1" (click)="setPage(page)">
+                {{ page }}</a>
             </li>
           </ul>
           <a class="pagination-next" (click)="setPage(pagination.currentPage + 1)" [class.disabled]="pagination.currentPage === pagination.totalPages">
