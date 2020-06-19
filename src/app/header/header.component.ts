@@ -42,4 +42,5 @@ toggleNavbar() {
   this.navMenu.nativeElement.classList.toggle('is-active');
 }
 
+
 }
