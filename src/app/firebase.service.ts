@@ -45,9 +45,7 @@ export class FirebaseService {
         })
        }).catch(err => {
          console.log(err);
-       }) 
-     })
-    }
+       }) }) }
 
     login(email: string, password: string) {
 
@@ -91,17 +89,12 @@ export class FirebaseService {
         this.firestore.collection("users").ref.where("username", "==", currentUser.email).onSnapshot(snap =>{
           snap.forEach(userRef => {
             this.currentUser = userRef.data();
-            //setUserStatus
+          
             this.setUserStatus(this.currentUser);
             console.log(this.userStatus)
 
            
-            
-              // if(userRef.data().role !== "admin") {
-              //  this.ngZone.run(() => this.router.navigate(["/profile"]));
-              // }else{
-              //  this.ngZone.run(() => this.router.navigate(["/admin"])); 
-              // }
+           
 
               this.ngZone.run(() => this.router.navigate(["/profile"]));
           })
@@ -126,21 +119,7 @@ export class FirebaseService {
     this.firestore.collection('posts').add(post);
  }
 
-//  newComment(message:string, id:string){
-  
-//   let comment = {
-//    user: this.userStatus.name,
-//    message: message,
-//    created: firebase.firestore.FieldValue.serverTimestamp()
-//   }
-//   console.log(comment)
-//    this.firestore.collection('posts').doc(id).collection('comments').add(comment);
-// }
 
-// newCazare(detaliiCazare){
-
-//    this.firestore.collection('cazari').add(detaliiCazare);
-// }
 
 }
 

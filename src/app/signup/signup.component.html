@@ -55,7 +55,7 @@
     </span>
   </div>
   
-  <div class="help is-error" *ngIf="emailInput.touched" style="color: red;">
+  <div class="help is-error" *ngIf="emailInput.invalid && emailInput.touched" style="color: red;">
     Adresa de email este necesara.
   </div>
  </div>
